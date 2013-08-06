@@ -17,20 +17,25 @@ public class TopActivity extends Activity {
 		setContentView(R.layout.activity_top);
 		
 
-		// ボタンオブジェクト取得
+		// ���������������������������������
 		Button button1 = (Button) findViewById(R.id.button1);
 		Button button2 = (Button) findViewById(R.id.button2);
 		Button button3 = (Button) findViewById(R.id.button3);
 		
-		// ボタンオブジェクトにクリックリスナー設定
+		// ������������������������������������������������������������
 		button1.setOnClickListener(new Button1ClickListener());
 		button2.setOnClickListener(new Button2ClickListener());
 		button3.setOnClickListener(new Button3ClickListener());
 	}
 	class Button1ClickListener implements OnClickListener{
 		public void onClick(View v){
+<<<<<<< HEAD
 			//Intent intent =new Intent(TopActivity.this,My4.class);
 			//startActivity(intent);
+=======
+			Intent intent =new Intent(TopActivity.this,MyGalleryActivity.class);
+			startActivity(intent);
+>>>>>>> 65ce6d2a1fa83158a2d5af153d4ac4cc05301f54
 		}
 	}
 	class Button2ClickListener implements OnClickListener{
