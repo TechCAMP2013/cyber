@@ -29,8 +29,8 @@ public class TopActivity extends Activity {
 	}
 	class Button1ClickListener implements OnClickListener{
 		public void onClick(View v){
-			Intent intent =new Intent(TopActivity.this,My4.class);
-			startActivity(intent);
+			//Intent intent =new Intent(TopActivity.this,My4.class);
+			//startActivity(intent);
 		}
 	}
 	class Button2ClickListener implements OnClickListener{
