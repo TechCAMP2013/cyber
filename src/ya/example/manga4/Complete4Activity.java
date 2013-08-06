@@ -57,8 +57,29 @@ public class Complete4Activity extends Activity {
 
 	    // references to our images
 	    private Integer[] mThumbIds = {
-	            R.drawable.pooh, R.drawable.ic_launcher,
-	            R.drawable.gorilla, R.drawable.totoro,
+	            R.drawable.sample1, R.drawable.sample2,
+	             R.drawable.sample1, R.drawable.sample2,
+	              R.drawable.sample1, R.drawable.sample2,
+	               R.drawable.sample1, R.drawable.sample2,
+	             R.drawable.sample1, R.drawable.sample2,
+	             R.drawable.sample1, R.drawable.sample2,
+	              R.drawable.sample1, R.drawable.sample2,
+	               R.drawable.sample1, R.drawable.sample2,
+	             R.drawable.sample1, R.drawable.sample2,
+	             R.drawable.sample1, R.drawable.sample2,
+	              R.drawable.sample1, R.drawable.sample2,
+	               R.drawable.sample1, R.drawable.sample2,
+	             R.drawable.sample1, R.drawable.sample2,
+	             R.drawable.sample1, R.drawable.sample2,
+	              R.drawable.sample1, R.drawable.sample2,
+	               R.drawable.sample1, R.drawable.sample2,
+	             R.drawable.sample1, R.drawable.sample2,
+	             R.drawable.sample1, R.drawable.sample2,
+	              R.drawable.sample1, R.drawable.sample2,
+	               R.drawable.sample1, R.drawable.sample2,
+	            
+	           
+	           
 	            
 	    };
 	}
