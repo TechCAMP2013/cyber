@@ -75,6 +75,10 @@ public class LoginActivity extends Activity {
 		public void onClick(View v) {
 			// TODO 自動生成されたメソッド・スタブ
 			test_tv.setText("説明押した後の処理ここ");
+			Intent intent2;
+			intent2 = new Intent(LoginActivity.this, HowToActivity.class );
+			// 遷移先のアクティビティを起動させる
+			startActivity( intent2 );
 		}
 		
 	}

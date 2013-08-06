@@ -14,13 +14,41 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="ya.example.manga4.MainActivity"
+            android:name="ya.example.manga4.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="ya.example.manga4.DecideTitleActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.DetailsOf4komaActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.DrawActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.DrawModeActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.PreviousKomaActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.HowToActivity"
+			android:label="@string/app_name" >
         </activity>
     </application>
 
