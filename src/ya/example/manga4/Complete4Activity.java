@@ -88,7 +88,7 @@ public class Complete4Activity extends Activity {
 	}
 	class ButtonClickListener implements OnClickListener{
 		public void onClick(View v){
-			Intent intent =new Intent(Complete4Activity.this,LoginActivity.class);
+			Intent intent =new Intent(Complete4Activity.this,TopActivity.class);
 			startActivity(intent);
 		
 	}
