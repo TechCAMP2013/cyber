@@ -63,7 +63,7 @@ public class LoginActivity extends Activity {
 			// TODO 自動生成されたメソッド・スタブ
 			test_tv.setText("決定押した後の処理ここ");
 			Intent intent;
-			intent = new Intent(LoginActivity.this, DrawActivity.class );
+			intent = new Intent(LoginActivity.this, DrawModeActivity.class );
 			// 遷移先のアクティビティを起動させる
 			startActivity( intent );
 		}
