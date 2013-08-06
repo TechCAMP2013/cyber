@@ -1,6 +1,7 @@
 package ya.example.manga4;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -61,6 +62,10 @@ public class LoginActivity extends Activity {
 		public void onClick(View v) {
 			// TODO 自動生成されたメソッド・スタブ
 			test_tv.setText("決定押した後の処理ここ");
+			Intent intent;
+			intent = new Intent(LoginActivity.this, DrawActivity.class );
+			// 遷移先のアクティビティを起動させる
+			startActivity( intent );
 		}
 	}
 	
