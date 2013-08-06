@@ -24,7 +24,7 @@ public class Complete4Activity extends Activity {
 	    private Context mContext;
 
 	    public ImageAdapter(Context c) {
-	        mContext = c;
+	        mContext = c; 
 	    }
 
 	    public int getCount() {

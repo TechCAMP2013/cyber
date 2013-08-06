@@ -19,6 +19,6 @@
     android:layout_height="wrap_content"
     android:layout_alignLeft="@+id/gridview"
     android:layout_alignParentTop="true"
-    android:text="もどる" />
+    android:text="もどる" /> 
 
 </RelativeLayout>

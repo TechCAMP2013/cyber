@@ -50,6 +50,14 @@
             android:name="ya.example.manga4.HowToActivity"
 			android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="ya.example.manga4.Complete4Activity"
+			android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.TopActivity"
+			android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
