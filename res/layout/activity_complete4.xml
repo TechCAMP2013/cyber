@@ -32,5 +32,24 @@
     android:layout_alignParentTop="true"
     android:text="もどる" />
 
+<EditText
+    android:id="@+id/editText1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/searchView1"
+    android:layout_toRightOf="@+id/searchView1"
+    android:ems="10" >
+
+    <requestFocus />
+</EditText>
+
+<SearchView
+    android:id="@+id/searchView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_above="@+id/gridview"
+    android:layout_toRightOf="@+id/button1" >
+</SearchView>
+
 </RelativeLayout>
 
