@@ -17,6 +17,7 @@ public class DrawView extends View implements OnTouchListener {
 	private float posy = 0.0f;	//イベントが起きたY座標
 	private Path path = null;	//パス
 	private Bitmap bitmap = null;	//Viewの状態を保存するためのBitmap
+	int haba = 8;
 
 	public DrawView(Context context) {
 		super(context);
@@ -84,7 +85,7 @@ public class DrawView extends View implements OnTouchListener {
 		//線のみ(塗りつぶさない)
 		paint.setStyle(Paint.Style.STROKE);
 		//線の太さ8
-		paint.setStrokeWidth(8);
+		paint.setStrokeWidth(haba);
 		//線の両端を丸くする
 		paint.setStrokeCap(Paint.Cap.ROUND);
 		//線のつなぎ目を丸くする

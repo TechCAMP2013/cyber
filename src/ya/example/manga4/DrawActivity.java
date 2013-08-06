@@ -7,16 +7,20 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.TextView;
 
 public class DrawActivity extends Activity {
 	DrawView dv;
 	ImageView[] iv = new ImageView[4];
+	TextView tv;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//画面サイズの取得
@@ -36,6 +40,11 @@ public class DrawActivity extends Activity {
 		dv = new DrawView(this);
 		
 		ll.addView(dv,params);		
+		
+		// ここから各設定の詳細へ
+		
+		
+		
 
 		
 		
@@ -70,7 +79,19 @@ public class DrawActivity extends Activity {
 		
 
 		setting_tl.addView(setting_tr[0]);
-		ll.addView(setting_tl,createParam(4*w,w*4));
+		ll.addView(setting_tl);
+		
+		
+		iv[0].setOnClickListener(new ColorClickListener());
+		iv[1].setOnClickListener(new BrushClickListener());
+		iv[2].setOnClickListener(new EraserClickListener());
+		iv[3].setOnClickListener(new StampClickListener());
+		
+		//デバッグ
+		tv = new TextView(this);
+		tv.setText("ここ");
+		ll.addView(tv);
+		
 		
 
 		//setContentView(new DrawView(this));
@@ -78,4 +99,43 @@ public class DrawActivity extends Activity {
 	private LinearLayout.LayoutParams createParam(int w, int h){
         return new LinearLayout.LayoutParams(w, h);
     }
+	
+	class ColorClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			tv.setText("color");
+		}
+
+	}
+	class BrushClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			tv.setText("brush");
+			
+		}
+
+	}
+	class EraserClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			tv.setText("eraser");
+		}
+
+	}
+	class StampClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			tv.setText("stamp");
+			dv.haba = 20;
+		}
+
+	}
 }
