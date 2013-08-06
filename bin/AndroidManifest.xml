@@ -46,6 +46,26 @@
             android:name="ya.example.manga4.MainActivity"
             android:label="@string/app_name" >
         </activity>
+                <activity
+            android:name="ya.example.manga4.Complete4Activity"
+            android:label="@string/title_activity_complete4" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.TopActivity"
+            android:label="@string/title_activity_top" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.My4"
+            android:label="@string/title_activity_my4" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.Show4Activity"
+            android:label="@string/title_activity_show4" >
+        </activity>
+        <activity
+            android:name="ya.example.manga4.HowToActivity"
+            android:label="@string/title_activity_how_to" >
+        </activity>
     </application>
 
 </manifest>
