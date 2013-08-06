@@ -4,7 +4,13 @@
     <string name="app_name">Manga4</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_complete4">Complete4Activity</string>
+    <string name="title_activity_top">TopActivity</string>
+    <string name="title_activity_my4">My4</string>
+    <string name="title_activity_show4">Show4Activity</string>
+    <string name="title_activity_how_to">HowToActivity</string>
     <string name="how_to_1">・このアプリは４コマ漫画を協力して作成するアプリです。\n\n・前のコマからあなたが想像した次のコマを書き入れましょう！\n\n・あなたが書くときに見えるのは一つ前のコマと、その四コマのタイトルだけです。\n\n・自分が予想もしなかったような展開が待ってるはずです！お楽しみに！</string>
-
-
+     <string name="top_1">MyGallery</string>
+	  <string name="top_2">他の作品</string>
+	 <string name="top_3">絵を描く</string>
 </resources>
