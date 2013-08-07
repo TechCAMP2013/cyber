@@ -5,6 +5,7 @@ import java.net.HttpURLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.http.HttpResponse;
@@ -13,7 +14,9 @@ import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.cookie.Cookie;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.AbstractHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
@@ -49,7 +52,7 @@ public class AsyncHttpPost extends AsyncTask<String, String, String> {
     protected String doInBackground(String... params) {
         byte[] result = null;
         String str = "";
-        HttpClient client = new DefaultHttpClient();
+        HttpClient client = HttpClientFactory.getThreadSafeClient();
         HttpPost post = new HttpPost(params[0]);// in this case, params[0] is URL
         try {
             // set up post data

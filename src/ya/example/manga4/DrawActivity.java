@@ -337,7 +337,30 @@ public class DrawActivity extends Activity {
 	if(resultCode == RESULT_OK){
 		//dv.color_array = data.getStringArrayExtra("color");
 		//System.out.println(data.getStringArray("color"));
-		System.out.println("aaaaaaaaaaaa");
+		//Object[] obj = (Object[])data.getSerializableExtra("color");
+		//String[] obj;
+		//obj = data.getStringArrayExtra("color");
+		// Object[]として取り出す
+		Object[] obj = (Object[])data.getSerializableExtra("color");
+
+		// データの配列を生成する
+		String[] data_a = new String[obj.length];
+
+		// 配列に詰めなおす
+		for(int i=0; i<obj.length; i++)
+		{
+		  data_a[i] = (String)obj[i];
+		}
+		//dv.color_array[0] = (String) obj[0];
+		//dv.color_array[1] = (String) obj[1];
+		//dv.color_array[2] = (String) obj[2];
+		dv.color_array[0] = data_a[0];
+		dv.color_array[1] = data_a[1];
+		dv.color_array[2] = data_a[2];
+		
+		System.out.println("0="+dv.color_array[0]+",1="+dv.color_array[1]+",2="+dv.color_array[2]);
+		System.out.println("0="+data_a[0]+",1="+data_a[1]+",2="+data_a[2]);
+		
 	}
 		}
 	}

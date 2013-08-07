@@ -86,122 +86,123 @@ public class SelectColorActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 				Toast.makeText(SelectColorActivity.this, "" + position, Toast.LENGTH_SHORT).show();
 				Intent data = new Intent();
-				String colorArray[];
+				String colorArray[] = {"0","0","0"};
 				switch(position){
 				case 0:
 					colorArray = new String[3];
 					colorArray[0] = "0";
-					colorArray[0] = "0";
-					colorArray[0] = "0";
+					colorArray[1] = "0";
+					colorArray[2] = "0";
 					data.putExtra("color", colorArray);
 					break;
 				case 1:
 					colorArray = new String[3];
 					colorArray[0] = "128";
-					colorArray[0] = "128";
-					colorArray[0] = "128";
+					colorArray[1] = "128";
+					colorArray[2] = "128";
 					data.putExtra("color", colorArray);
 					break;
 				case 2:
 					colorArray = new String[3];
 					colorArray[0] = "192";
-					colorArray[0] = "192";
-					colorArray[0] = "192";
+					colorArray[1] = "192";
+					colorArray[2] = "192";
 					data.putExtra("color", colorArray);
 					break;
 				case 3:
 					colorArray = new String[3];
 					colorArray[0] = "255";
-					colorArray[0] = "255";
-					colorArray[0] = "255";
+					colorArray[1] = "255";
+					colorArray[2] = "255";
 					data.putExtra("color", colorArray);
 					break;
 				case 4:
 					colorArray = new String[3];
 					colorArray[0] = "255";
-					colorArray[0] = "0";
-					colorArray[0] = "0";
+					colorArray[1] = "0";
+					colorArray[2] = "0";
 					data.putExtra("color", colorArray);
 					break;
 				case 5:
 					colorArray = new String[3];
 					colorArray[0] = "255";
-					colorArray[0] = "255";
-					colorArray[0] = "0";
+					colorArray[1] = "255";
+					colorArray[2] = "0";
 					data.putExtra("color", colorArray);
 					break;
 				case 6:
 					colorArray = new String[3];
 					colorArray[0] = "0";
-					colorArray[0] = "255";
-					colorArray[0] = "0";
+					colorArray[1] = "255";
+					colorArray[2] = "0";
 					data.putExtra("color", colorArray);
 					break;
 				case 7:
 					colorArray = new String[3];
 					colorArray[0] = "0";
-					colorArray[0] = "255";
-					colorArray[0] = "255";
+					colorArray[1] = "255";
+					colorArray[2] = "255";
 					data.putExtra("color", colorArray);
 					break;
 				case 8:
 					colorArray = new String[3];
 					colorArray[0] = "0";
-					colorArray[0] = "0";
-					colorArray[0] = "255";
+					colorArray[1] = "0";
+					colorArray[2] = "255";
 					data.putExtra("color", colorArray);
 					break;
 				case 9:
 					colorArray = new String[3];
 					colorArray[0] = "255";
-					colorArray[0] = "0";
-					colorArray[0] = "255";
+					colorArray[1] = "0";
+					colorArray[2] = "255";
 					data.putExtra("color", colorArray);
 					break;
 				case 10:
 					colorArray = new String[3];
 					colorArray[0] = "128";
-					colorArray[0] = "0";
-					colorArray[0] = "0";
+					colorArray[1] = "0";
+					colorArray[2] = "0";
 					data.putExtra("color", colorArray);
 					break;
 				case 11:
 					colorArray = new String[3];
 					colorArray[0] = "128";
-					colorArray[0] = "128";
-					colorArray[0] = "0";
+					colorArray[1] = "128";
+					colorArray[2] = "0";
 					data.putExtra("color", colorArray);
 					break;
 				case 12:
 					colorArray = new String[3];
 					colorArray[0] = "0";
-					colorArray[0] = "128";
-					colorArray[0] = "0";
+					colorArray[1] = "128";
+					colorArray[2] = "0";
 					data.putExtra("color", colorArray);
 					break;
 				case 13:
 					colorArray = new String[3];
 					colorArray[0] = "0";
-					colorArray[0] = "128";
-					colorArray[0] = "128";
+					colorArray[1] = "128";
+					colorArray[2] = "128";
 					data.putExtra("color", colorArray);
 
 					break;
 				case 14:
 					colorArray = new String[3];
 					colorArray[0] = "0";
-					colorArray[0] = "0";
-					colorArray[0] = "128";
+					colorArray[1] = "0";
+					colorArray[2] = "128";
 					data.putExtra("color", colorArray);
 					break;
 				case 15:
 					colorArray = new String[3];
 					colorArray[0] = "128";
-					colorArray[0] = "0";
-					colorArray[0] = "128";
+					colorArray[1] = "0";
+					colorArray[2] = "128";
 					data.putExtra("color", colorArray);
 					break;
 				}
+				System.out.println("selectのほう"+colorArray);
 				setResult(RESULT_OK, data);
 				finish();
 			}
