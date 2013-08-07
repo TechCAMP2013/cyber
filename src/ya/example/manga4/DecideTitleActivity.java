@@ -24,13 +24,13 @@ public class DecideTitleActivity extends Activity {
 		setContentView(ll);
 		
 		title_tv = new TextView(this);
-		title_tv.setText("タイトルを入力してください");
+		title_tv.setText("���������������������������������������");
 		
 		title_et = new EditText(this);
 		
 		
 		decide_bt = new Button(this);
-		decide_bt.setText("決定");
+		decide_bt.setText("������");
 		
 		ll.addView(title_tv);
 		ll.addView(title_et);
@@ -43,10 +43,10 @@ public class DecideTitleActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
+			// TODO ���������������������������������������������
 			Intent intent;
 			intent = new Intent(DecideTitleActivity.this, DrawActivity.class );
-			// 遷移先のアクティビティを起動させる
+			// ���������������������������������������������������
 			startActivity( intent );
 		}
 		

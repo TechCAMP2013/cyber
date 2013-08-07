@@ -19,11 +19,11 @@ public class DrawActivity extends Activity {
 	ImageView[] iv = new ImageView[4];
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//画面サイズの取得
+		//逕ｻ髱｢繧ｵ繧､繧ｺ縺ｮ蜿門ｾ�		
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 		Display display = wm.getDefaultDisplay();
 		 
-		//画面サイズの4分の1をViewのサイズとして設定する
+		//逕ｻ髱｢繧ｵ繧､繧ｺ縺ｮ4蛻��1繧歎iew縺ｮ繧ｵ繧､繧ｺ縺ｨ縺励※險ｭ螳壹☆繧�		
 		int w = display.getWidth();
 		int h = display.getHeight();
 		int width =w;
