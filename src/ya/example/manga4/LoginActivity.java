@@ -76,7 +76,7 @@ public class LoginActivity extends Activity {
 			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
 			test_tv.setText("隱ｬ譏取款縺励◆蠕後�蜃ｦ逅�％縺�");
 			Intent intent2;
-			intent2 = new Intent(LoginActivity.this, Show4KomaActivity.class );
+			intent2 = new Intent(LoginActivity.this, DrawModeActivity.class );
 			// 驕ｷ遘ｻ蜈医�繧｢繧ｯ繝�ぅ繝薙ユ繧｣繧定ｵｷ蜍輔＆縺帙ｋ
 			startActivity( intent2 );
 		}
