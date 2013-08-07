@@ -1,7 +1,14 @@
 package ya.example.manga4;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.InputStreamEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.app.Activity;
 import android.content.Context;
@@ -29,10 +36,17 @@ public class DrawView extends View implements OnTouchListener {
 	String[] color_array = {"0","0","0"};
 	private Canvas bmpCanvas;
 	private Activity _context;
-
+	private static Activity activity;
+	
+	public static void show(String str)
+	{
+		Toast.makeText(activity, str, Toast.LENGTH_SHORT).show();
+	}
+	
 	public DrawView(Context context) {
 		super(context);
 		_context = (Activity)context;
+		activity = _context;
 		// TODO 閾ｪ蜍慕函謌舌＆繧後◆繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ繝ｼ繝ｻ繧ｹ繧ｿ繝�		
 		setOnTouchListener(this);
 	}
@@ -123,7 +137,10 @@ public class DrawView extends View implements OnTouchListener {
 		 Toast.makeText(_context, "SDCARDが認識されません。", Toast.LENGTH_SHORT).show();
 		 return;
 		 }
+		 // test
+		 String url = "http://133.242.188.195:8080/cyber4koma/file";
 		 File file = new File(Environment.getExternalStorageDirectory().getPath()+"/drawbm/");
+		 
 		 
 		 try{
 			    if(!file.exists()){
@@ -147,7 +164,13 @@ public class DrawView extends View implements OnTouchListener {
 			} catch(Exception e) {
 			    Toast.makeText(_context, "例外発生", Toast.LENGTH_SHORT).show();
 			}
+	
+			AsyncHttpFile asyncHttpFile = new AsyncHttpFile(saveFile);
+			asyncHttpFile.send();
+			
 		}
+	
+	
 
 	 
 

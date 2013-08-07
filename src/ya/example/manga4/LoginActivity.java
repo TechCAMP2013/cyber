@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class LoginActivity extends HttpActivity {
 	EditText name_et,pass_et;
 	Button decide_bt, howto_bt;
 	HttpActivity activity = this;
+	ImageView iv;
 	
 	public void receiveMessage(Map<String, Object> map)
 	{
@@ -83,6 +85,18 @@ public class LoginActivity extends HttpActivity {
 		decide_bt.setOnClickListener(new DecideClickListener());
 		howto_bt.setOnClickListener(new HowtoClickListener());
 		
+		iv = new ImageView(this);
+		AsyncHttpDownload asyncHttpDownload = new AsyncHttpDownload("a.jpg",iv);
+		asyncHttpDownload.send();
+		ll.addView(iv);
+
+		
+		
+		
+		
+		
+		
+		
 	}
 	
 	class DecideClickListener implements OnClickListener{
@@ -122,4 +136,5 @@ public class LoginActivity extends HttpActivity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
-}
+
+	}
