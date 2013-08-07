@@ -9,6 +9,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
@@ -174,6 +176,30 @@ public class DrawActivity extends Activity {
 	private LinearLayout.LayoutParams createParam(int w, int h){
 		return new LinearLayout.LayoutParams(w, h);
 	}
+	
+	/** メニューの生成イベント */
+	 @Override
+	 public boolean onCreateOptionsMenu(Menu menu) {
+	 super.onCreateOptionsMenu(menu);
+	 getMenuInflater().inflate(R.menu.menu,menu);  
+	 return true;
+	 }
+	 /** メニューがクリックされた時のイベント */
+	 @Override
+	 public boolean onOptionsItemSelected(MenuItem item) {
+	 switch ( item.getItemId() ) {
+	 case R.id.item1:
+	 dv.clearDrawList(); 
+	 break;
+	 case R.id.item2:
+	 dv.saveToFile();
+	 break;
+	 case R.id.item3:
+	 finish();
+	 break;
+	 }
+	 return true;
+	 }
 
 	class ColorClickListener implements OnClickListener{
 

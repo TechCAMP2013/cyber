@@ -15,5 +15,9 @@
     <string name="top_3">絵を描く</string>
     <string name="title_activity_my_gallery">MyGalleryActivity</string>
     <string name="title_activity_show4_koma">Show4KomaActivity</string>
+    <string name="hello">Hello World, DrawBm!</string>
+ <string name="clean">DELETE</string>
+ <string name="save">SAVE</string>
+ <string name="finish">FINISH</string>
 
 </resources>

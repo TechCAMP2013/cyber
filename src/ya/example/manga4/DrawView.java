@@ -1,15 +1,22 @@
 package ya.example.manga4;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.CompressFormat;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.os.Environment;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.Toast;
 
 public class DrawView extends View implements OnTouchListener {
 
@@ -20,9 +27,12 @@ public class DrawView extends View implements OnTouchListener {
 	private Bitmap bitmap = null;	//Viewの状態を保存するためのBitmap
 	int haba = 22;
 	String[] color_array = {"0","0","0"};
+	private Canvas bmpCanvas;
+	private Activity _context;
 
 	public DrawView(Context context) {
 		super(context);
+		_context = (Activity)context;
 		// TODO 閾ｪ蜍慕函謌舌＆繧後◆繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ繝ｼ繝ｻ繧ｹ繧ｿ繝�		
 		setOnTouchListener(this);
 	}
@@ -99,5 +109,46 @@ public class DrawView extends View implements OnTouchListener {
 			canvas.drawPath(path, paint);
 		}
 	}
+	public void clearDrawList(){
+		bmpCanvas = new Canvas(bitmap);
+		 bmpCanvas.drawColor(Color.WHITE);
+		 invalidate();
+		}
+	private boolean sdcardWriteReady(){
+		 String state = Environment.getExternalStorageState();
+		 return (Environment.MEDIA_MOUNTED.equals(state));
+		}
+	public void saveToFile(){
+		 if(!sdcardWriteReady()){
+		 Toast.makeText(_context, "SDCARDが認識されません。", Toast.LENGTH_SHORT).show();
+		 return;
+		 }
+		 File file = new File(Environment.getExternalStorageDirectory().getPath()+"/drawbm/");
+		 
+		 try{
+			    if(!file.exists()){
+				file.mkdir();
+			    }
+			}catch(SecurityException e){}
+		 
+			String AttachName = file.getAbsolutePath() + "/";
+			AttachName += System.currentTimeMillis()+".jpg";
+			File saveFile = new File(AttachName);
+			while(saveFile.exists()) {
+			    AttachName = file.getAbsolutePath() + "/" + System.currentTimeMillis() +".jpg";
+			    saveFile = new File(AttachName);
+			}
+			try {
+			    FileOutputStream out = new FileOutputStream(AttachName);
+			    bitmap.compress(CompressFormat.JPEG, 100, out);
+			    out.flush();
+			    out.close();
+			    Toast.makeText(_context, "保存されました。", Toast.LENGTH_SHORT).show();
+			} catch(Exception e) {
+			    Toast.makeText(_context, "例外発生", Toast.LENGTH_SHORT).show();
+			}
+		}
+
+	 
 
 }
