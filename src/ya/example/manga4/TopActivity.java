@@ -33,8 +33,8 @@ public class TopActivity extends Activity {
 			//Intent intent =new Intent(TopActivity.this,My4.class);
 			//startActivity(intent);
 
-			//Intent intent =new Intent(TopActivity.this,MyGalleryActivity.class);
-			//startActivity(intent);
+			Intent intent =new Intent(TopActivity.this,MyGalleryActivity.class);
+			startActivity(intent);
 
 		}
 	}
