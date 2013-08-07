@@ -254,6 +254,7 @@ public class DrawActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO 自動生成されたメソッド・スタブ
+			dv.saveToFile();
 			Intent intent2;
 			intent2 = new Intent(DrawActivity.this, TopActivity.class );
 			// 遷移先のアクティビティを起動させる
