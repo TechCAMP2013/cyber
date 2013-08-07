@@ -98,18 +98,18 @@ public class DrawActivity extends Activity {
 		
 		
 		Bitmap b_2 = BitmapFactory.decodeResource(getResources(), R.drawable.b_2);
-		Bitmap b_6 = BitmapFactory.decodeResource(getResources(), R.drawable.b_6);
-		Bitmap b_10 = BitmapFactory.decodeResource(getResources(), R.drawable.b_10);
-		Bitmap b_14 = BitmapFactory.decodeResource(getResources(), R.drawable.b_14);
-		Bitmap b_18 = BitmapFactory.decodeResource(getResources(), R.drawable.b_18);
 		Bitmap b_22 = BitmapFactory.decodeResource(getResources(), R.drawable.b_22);
+		Bitmap b_42 = BitmapFactory.decodeResource(getResources(), R.drawable.b_42);
+		Bitmap b_62 = BitmapFactory.decodeResource(getResources(), R.drawable.b_62);
+		Bitmap b_82 = BitmapFactory.decodeResource(getResources(), R.drawable.b_82);
+		Bitmap b_100 = BitmapFactory.decodeResource(getResources(), R.drawable.b_100);
 		
 		Bitmap b_2_bmp = Bitmap.createScaledBitmap(b_2, w/6, w/6, false);
-		Bitmap b_6_bmp = Bitmap.createScaledBitmap(b_6, w/6, w/6, false);
-		Bitmap b_10_bmp = Bitmap.createScaledBitmap(b_10, w/6, w/6, false);
-		Bitmap b_14_bmp = Bitmap.createScaledBitmap(b_14, w/6, w/6, false);
-		Bitmap b_18_bmp = Bitmap.createScaledBitmap(b_18, w/6, w/6, false);
 		Bitmap b_22_bmp = Bitmap.createScaledBitmap(b_22, w/6, w/6, false);
+		Bitmap b_42_bmp = Bitmap.createScaledBitmap(b_42, w/6, w/6, false);
+		Bitmap b_62_bmp = Bitmap.createScaledBitmap(b_62, w/6, w/6, false);
+		Bitmap b_82_bmp = Bitmap.createScaledBitmap(b_82, w/6, w/6, false);
+		Bitmap b_100_bmp = Bitmap.createScaledBitmap(b_100, w/6, w/6, false);
 		
 		brush_tl1 = new TableLayout(this);
 		brush_tr1 = new TableRow[1];
@@ -117,15 +117,15 @@ public class DrawActivity extends Activity {
 		brush_iv[0] = new ImageView(this);
 		brush_iv[0].setImageBitmap(b_2_bmp);
 		brush_iv[1] = new ImageView(this);
-		brush_iv[1].setImageBitmap(b_6_bmp);
+		brush_iv[1].setImageBitmap(b_22_bmp);
 		brush_iv[2] = new ImageView(this);
-		brush_iv[2].setImageBitmap(b_10_bmp);
+		brush_iv[2].setImageBitmap(b_42_bmp);
 		brush_iv[3] = new ImageView(this);
-		brush_iv[3].setImageBitmap(b_14_bmp);
+		brush_iv[3].setImageBitmap(b_62_bmp);
 		brush_iv[4] = new ImageView(this);
-		brush_iv[4].setImageBitmap(b_18_bmp);
+		brush_iv[4].setImageBitmap(b_82_bmp);
 		brush_iv[5] = new ImageView(this);
-		brush_iv[5].setImageBitmap(b_22_bmp);
+		brush_iv[5].setImageBitmap(b_100_bmp);
 		
 		brush_tr1[0] = new TableRow(this);
 		
@@ -138,8 +138,8 @@ public class DrawActivity extends Activity {
 		
 
 		brush_tl1.addView(brush_tr1[0]);
-		//ll.addView(brush_tl1);
-		
+		ll.addView(brush_tl1);
+		brush_tl1.setVisibility(View.GONE);
 		
 		
 		
@@ -157,7 +157,14 @@ public class DrawActivity extends Activity {
 		setting_iv[2].setOnClickListener(new EraserClickListener());
 		setting_iv[3].setOnClickListener(new StampClickListener());
 		
+		brush_iv[0].setOnClickListener(new B_2ClickListener());
+		brush_iv[1].setOnClickListener(new B_22ClickListener());
+		brush_iv[2].setOnClickListener(new B_42ClickListener());
+		brush_iv[3].setOnClickListener(new B_62ClickListener());
+		brush_iv[4].setOnClickListener(new B_82ClickListener());
+		brush_iv[5].setOnClickListener(new B_100ClickListener());
 		
+		brush_tl1.setOnClickListener(new TlClickListener());
 		
 
 		//setContentView(new DrawView(this));
@@ -181,7 +188,13 @@ public class DrawActivity extends Activity {
 		public void onClick(View v) {
 			// TODO 自動生成されたメソッド・スタブ
 			//tv.setText("brush");
-			ll.addView(brush_tl1);
+			if(brush_tl1.getVisibility() == 0){
+				brush_tl1.setVisibility(View.GONE);
+			}else{
+				brush_tl1.setVisibility(View.VISIBLE);
+			}
+				
+			//ll.addView(brush_tl1);
 			
 		}
 
@@ -218,4 +231,72 @@ public class DrawActivity extends Activity {
 		}
 		
 	}
+	
+	class TlClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			System.out.println("vは？"+v);
+			System.out.println(v.getId());
+		}
+		
+	}
+	
+	class B_2ClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			dv.haba = 2;
+		}
+		
+	}
+	
+	class B_22ClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			dv.haba = 22;
+		}
+		
+	}
+	class B_42ClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			dv.haba = 42;
+		}
+		
+	}
+	class B_62ClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			dv.haba = 62;
+		}
+		
+	}
+	class B_82ClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			dv.haba = 82;
+		}
+		
+	}
+	class B_100ClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			dv.haba = 100;
+		}
+		
+	}
+	
 }

@@ -17,7 +17,7 @@ public class DrawView extends View implements OnTouchListener {
 	private float posy = 0.0f;	//イベントが起きたY座標
 	private Path path = null;	//パス
 	private Bitmap bitmap = null;	//Viewの状態を保存するためのBitmap
-	int haba = 8;
+	int haba = 22;
 
 	public DrawView(Context context) {
 		super(context);

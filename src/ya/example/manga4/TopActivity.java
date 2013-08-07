@@ -29,13 +29,13 @@ public class TopActivity extends Activity {
 	}
 	class Button1ClickListener implements OnClickListener{
 		public void onClick(View v){
-<<<<<<< HEAD
+
 			//Intent intent =new Intent(TopActivity.this,My4.class);
 			//startActivity(intent);
-=======
-			Intent intent =new Intent(TopActivity.this,MyGalleryActivity.class);
-			startActivity(intent);
->>>>>>> 65ce6d2a1fa83158a2d5af153d4ac4cc05301f54
+
+			//Intent intent =new Intent(TopActivity.this,MyGalleryActivity.class);
+			//startActivity(intent);
+
 		}
 	}
 	class Button2ClickListener implements OnClickListener{
