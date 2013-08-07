@@ -335,7 +335,9 @@ public class DrawActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == SELECTCOLOR_ACTIVITY) {
 	if(resultCode == RESULT_OK){
-		dv.color_array = data.getStringArrayExtra("color");
+		//dv.color_array = data.getStringArrayExtra("color");
+		//System.out.println(data.getStringArray("color"));
+		System.out.println("aaaaaaaaaaaa");
 	}
 		}
 	}
