@@ -3,55 +3,44 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
- 
-    <ViewFlipper
-        android:id="@+id/viewflipper"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="スライドスクロール"
+        android:textSize="28sp" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        >
- 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#000000"
-            >
-            <TextView
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="48dip"
-                android:text="画面１"/>
- 
-        </RelativeLayout>
- 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#FFFFFF"
-            >
-            <TextView
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="48dip"
-                android:text="画面２"/>
- 
-        </RelativeLayout>
- 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:background="#333333"
-            >
-            <TextView
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="48dip"
-                android:text="画面３"/>
- 
-        </RelativeLayout>
- 
-    </ViewFlipper>
- 
+        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+        <ImageButton
+            android:id="@+id/btn_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_media_rew" />
+        <ImageButton
+            android:id="@+id/btn_prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_media_previous" />
+        <ImageButton
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_media_next" />
+        <ImageButton
+            android:id="@+id/btn_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_media_ff" />
+    </LinearLayout>
 </LinearLayout>
