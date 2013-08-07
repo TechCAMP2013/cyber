@@ -10,7 +10,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpVersion;
 import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
 import org.apache.http.client.ClientProtocolException;
@@ -19,9 +21,13 @@ import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntity;
+import org.apache.http.entity.mime.content.ContentBody;
+import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.CoreProtocolPNames;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONException;
@@ -55,26 +61,43 @@ public class AsyncHttpFile extends AsyncTask<String, String, String> {
     protected String  doInBackground(String... params) {
     	System.out.println("KOKO!");
     	String str = "";
-    	 HttpClient httpclient = new DefaultHttpClient();
+    	 HttpClient httpclient = HttpClientFactory.getThreadSafeClient();
+    	 
+    	 
+    	 try
+    	 {
+    	 
+    	 httpclient.getParams().setParameter(CoreProtocolPNames.PROTOCOL_VERSION, HttpVersion.HTTP_1_1);
 
-		    HttpPost httppost = new HttpPost(params[0]);
-		    str += "1";
-		    InputStreamEntity reqEntity;
-			try {
-				str += "2";
-				reqEntity = new InputStreamEntity(
-				        new FileInputStream(file), -1);
-			
-		    reqEntity.setContentType("binary/octet-stream");
-		    reqEntity.setChunked(true); // Send in multiple parts if needed
-		    httppost.setEntity(reqEntity);
-		    HttpResponse response = httpclient.execute(httppost);
-		    str += "waaaaaa";
-			} catch (Exception e) {
-				// TODO 自動生成された catch ブロック
-				e.printStackTrace();
-			}  
-			return str;
+    	    HttpPost httppost = new HttpPost(params[0]);
+
+    	    MultipartEntity mpEntity = new MultipartEntity();
+    	    ContentBody cbFile = new FileBody(file, "image/jpeg");
+    	    mpEntity.addPart("file", cbFile);
+
+
+    	    httppost.setEntity(mpEntity);
+    	    System.out.println("executing request " + httppost.getRequestLine());
+    	    HttpResponse response = httpclient.execute(httppost);
+    	    HttpEntity resEntity = response.getEntity();
+
+    	    System.out.println(response.getStatusLine());
+    	    if (resEntity != null) {
+    	      System.out.println(EntityUtils.toString(resEntity));
+    	    }
+    	    if (resEntity != null) {
+    	      resEntity.consumeContent();
+    	    }
+    	    
+    	 } catch(Exception e)
+    	 {
+    		 e.printStackTrace();
+    	 }
+    	 
+    	 
+    	 
+    	 
+    	    return str;
     }
 
     /**
