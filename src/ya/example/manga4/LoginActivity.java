@@ -24,18 +24,18 @@ public class LoginActivity extends Activity {
 		setContentView(ll);
 		
 		name_tv = new TextView(this);
-		name_tv.setText("蜷榊燕繧貞�蜉帙＠縺ｦ縺上□縺輔＞");
+		name_tv.setText("ユーザ名を入力してください");
 		name_et = new EditText(this);
 		
 		pass_tv = new TextView(this);
-		pass_tv.setText("繝代せ繝ｯ繝ｼ繝峨ｒ蜈･蜉帙＠縺ｦ縺上□縺輔＞");
+		pass_tv.setText("パスワードを入力してください");
 		pass_et = new EditText(this);
 		
 		decide_bt = new Button(this);
-		decide_bt.setText("豎ｺ螳�");
+		decide_bt.setText("決定");
 		
 		howto_bt = new Button(this);
-		howto_bt.setText("隱ｬ譏�");
+		howto_bt.setText("使い方");
 		
 		test_tv = new TextView(this);
 		test_tv.setText("");
