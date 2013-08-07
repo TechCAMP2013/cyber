@@ -20,7 +20,7 @@ public class DrawModeActivity extends Activity {
 		setContentView(ll);
 		
 		top_tv = new TextView(this);
-		top_tv.setText("縺ｩ縺ｮ邯壹″繧呈緒縺�");
+		top_tv.setText("続きを書きたいコマを選択してください");
 		
 		ll.addView(top_tv);
 		
@@ -37,10 +37,10 @@ public class DrawModeActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
+			// TODO 髢ｾ�ｪ陷肴�蜃ｽ隰瑚���ｹｧ蠕娯螺郢晢ｽ｡郢ｧ�ｽ郢晢ｿｽ繝ｩ郢晢ｽｻ郢ｧ�ｹ郢ｧ�ｿ郢晢ｿｽ			
 			Intent intent;
 			intent = new Intent(DrawModeActivity.this, DecideTitleActivity.class );
-			// 驕ｷ遘ｻ蜈医�繧｢繧ｯ繝�ぅ繝薙ユ繧｣繧定ｵｷ蜍輔＆縺帙ｋ
+			// 鬩包ｽｷ驕假ｽｻ陷亥現�ｽ郢ｧ�｢郢ｧ�ｯ郢晢ｿｽ縺�ｹ晁侭繝ｦ郢ｧ�｣郢ｧ螳夲ｽｵ�ｷ陷崎ｼ費ｼ�ｸｺ蟶呻ｽ�			
 			startActivity( intent );
 		}
 	}

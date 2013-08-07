@@ -24,7 +24,7 @@ public class DecideTitleActivity extends Activity {
 		setContentView(ll);
 		
 		title_tv = new TextView(this);
-		title_tv.setText("タイトルを設定してください");
+		title_tv.setText("タイトルを決定してください");
 		
 		title_et = new EditText(this);
 		
@@ -43,10 +43,10 @@ public class DecideTitleActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO ���������������������������������������������
+			// TODO �ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ
 			Intent intent;
 			intent = new Intent(DecideTitleActivity.this, DrawActivity.class );
-			// ���������������������������������������������������
+			// �ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ
 			startActivity( intent );
 		}
 		
