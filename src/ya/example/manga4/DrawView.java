@@ -19,6 +19,7 @@ public class DrawView extends View implements OnTouchListener {
 	private Path path = null;	//パス
 	private Bitmap bitmap = null;	//Viewの状態を保存するためのBitmap
 	int haba = 22;
+	String[] color_array = {"0","0","0"};
 
 	public DrawView(Context context) {
 		super(context);
@@ -82,7 +83,7 @@ public class DrawView extends View implements OnTouchListener {
 		//繧｢繝ｳ繝√お繧､繝ｪ繧｢繧ｹ繧呈怏蜉ｹ縺ｫ縺吶ｋ
 		paint.setAntiAlias(true);
 		//髱定牡縲��譏主ｺｦ100
-		paint.setColor(Color.argb(100, 0, 0, 255));
+		paint.setColor(Color.argb(255, Integer.valueOf(color_array[0]), Integer.valueOf(color_array[1]), Integer.valueOf(color_array[2])));
 		//邱壹�縺ｿ(蝪励ｊ縺､縺ｶ縺輔↑縺�
 		paint.setStyle(Paint.Style.STROKE);
 		//線の太さ8
