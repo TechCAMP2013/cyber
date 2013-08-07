@@ -20,12 +20,12 @@ public class DrawModeActivity extends Activity {
 		setContentView(ll);
 		
 		top_tv = new TextView(this);
-		top_tv.setText("どの続きを描く");
+		top_tv.setText("縺ｩ縺ｮ邯壹″繧呈緒縺�");
 		
 		ll.addView(top_tv);
 		
 		new_bt = new Button(this);
-		new_bt.setText("新規作成");
+		new_bt.setText("譁ｰ隕丈ｽ懈�");
 		
 		ll.addView(new_bt);
 		
@@ -37,10 +37,10 @@ public class DrawModeActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
 			Intent intent;
 			intent = new Intent(DrawModeActivity.this, DecideTitleActivity.class );
-			// 遷移先のアクティビティを起動させる
+			// 驕ｷ遘ｻ蜈医�繧｢繧ｯ繝�ぅ繝薙ユ繧｣繧定ｵｷ蜍輔＆縺帙ｋ
 			startActivity( intent );
 		}
 	}
