@@ -24,13 +24,13 @@ public class DecideTitleActivity extends Activity {
 		setContentView(ll);
 		
 		title_tv = new TextView(this);
-		title_tv.setText("���������������������������������������");
+		title_tv.setText("タイトルを設定してください");
 		
 		title_et = new EditText(this);
 		
 		
 		decide_bt = new Button(this);
-		decide_bt.setText("������");
+		decide_bt.setText("決定");
 		
 		ll.addView(title_tv);
 		ll.addView(title_et);

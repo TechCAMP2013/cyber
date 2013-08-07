@@ -25,7 +25,7 @@ public class DrawModeActivity extends Activity {
 		ll.addView(top_tv);
 		
 		new_bt = new Button(this);
-		new_bt.setText("譁ｰ隕丈ｽ懈�");
+		new_bt.setText("新規作成");
 		
 		ll.addView(new_bt);
 		
