@@ -4,21 +4,28 @@ import ya.example.manga4.SelectColorActivity.ImageAdapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class DrawModeActivity extends Activity {
 	TextView top_tv;
 	Button new_bt;
+	ImageView[] test_iv = new ImageView[1];
+	LinearLayout ll; 
 	
 	public class ImageAdapter extends BaseAdapter {
 		private Context mContext;
@@ -64,13 +71,17 @@ public class DrawModeActivity extends Activity {
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		LinearLayout ll = new LinearLayout(this);
-		ll.setOrientation(LinearLayout.VERTICAL);
+		//LinearLayout ll = new LinearLayout(this);
+		//ll.setOrientation(LinearLayout.VERTICAL);
+		
 		setContentView(R.layout.activity_draw_mode);
+		ll = (LinearLayout) findViewById(R.id.drow_mode_ll);
 		
 		TextView text_view_next = (TextView) findViewById(R.id.textViewNext);
 		
 		GridView gridview = (GridView) findViewById(R.id.gridview);
+		
+		//test_iv = (ImageView) findViewById(R.id.textViewNext);
 		
 		gridview.setAdapter(new ImageAdapter(this));
 		Button new_bt = (Button) findViewById(R.id.new_button);
@@ -89,6 +100,29 @@ public class DrawModeActivity extends Activity {
 		
 		new_bt.setOnClickListener(new NewClickListener());
 		
+		final Context c;
+		c = this;
+		gridview.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+				//ll.addView(v);
+				Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.aqua);
+				test_iv[0] = new ImageView(c);
+				test_iv[0].setImageBitmap(bmp);
+				System.out.println("v=?"+v+",test_iv="+test_iv[0]);
+				ll.addView(test_iv[0]);
+				//ll.addView(v);
+				Bundle b = new Bundle();
+				b.putParcelable("bitmapdata", bmp);
+				Intent intent2;
+				intent2 = new Intent(DrawModeActivity.this, DrawActivity.class );
+				intent2.putExtras(b);
+				startActivity( intent2 );
+				
+
+				
+			}
+		});
+		
 	}
 	
 	class NewClickListener implements OnClickListener{
@@ -102,6 +136,7 @@ public class DrawModeActivity extends Activity {
 			startActivity( intent );
 		}
 	}
+
 	
 
 }

@@ -48,7 +48,7 @@ public class DecideTitleActivity extends Activity {
 			intent = new Intent(DecideTitleActivity.this, DrawActivity.class );
 			
 			intent.putExtra("title",title_et.getText().toString());
-
+			
 			startActivity( intent );
 		}
 		

@@ -40,6 +40,8 @@ public class DrawActivity extends Activity {
 	TableRow[] brush_tr1;
 
 	LinearLayout ll;
+	
+	Bitmap precolor_bmp1;
 
 	private static final int SELECTCOLOR_ACTIVITY = 1001;
 
@@ -293,7 +295,8 @@ public class DrawActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO 自動生成されたメソッド・スタブ
-				AlertHelper.showPreImg(c, "", listenerYes, R.drawable.sample1);
+				precolor_bmp1 = BitmapFactory.decodeResource(getResources(), R.drawable.color);
+				AlertHelper.showPreImg(c, "", listenerYes, precolor_bmp1);
 			}
 			
 	}
