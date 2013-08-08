@@ -3,6 +3,8 @@ package ya.example.manga4;
 import java.util.HashMap;
 import java.util.Map;
 
+import ya.example.manga4.MyGalleryActivity;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,7 +20,7 @@ public class TopActivity extends HttpActivity {
 			HttpActivity activity = this;	
 			EditText name_et,pass_et;
 			int newCount = 0;
-			Button button1;
+			Button button1; 
 		
 			public void receiveMessage(Map<String, Object> map)    //this
 			{
@@ -98,3 +100,4 @@ public class TopActivity extends HttpActivity {
 	
 
 }
+

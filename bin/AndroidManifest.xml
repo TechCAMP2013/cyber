@@ -38,6 +38,10 @@
             android:label="@string/app_name" >
         </activity>
         <activity
+            android:name="ya.example.manga4.DrawViewActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
             android:name="ya.example.manga4.DrawModeActivity"
             android:label="@string/app_name" >
         </activity>
