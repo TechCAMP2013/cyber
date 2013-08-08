@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <TextView
+        android:id="@+id/textViewNext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="次の絵の続きを描いて下さい"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <GridView
         android:id="@+id/gridview"
         android:layout_width="fill_parent"

@@ -68,6 +68,8 @@ public class DrawModeActivity extends Activity {
 		ll.setOrientation(LinearLayout.VERTICAL);
 		setContentView(R.layout.activity_draw_mode);
 		
+		TextView text_view_next = (TextView) findViewById(R.id.textViewNext);
+		
 		GridView gridview = (GridView) findViewById(R.id.gridview);
 		
 		gridview.setAdapter(new ImageAdapter(this));
@@ -75,8 +77,8 @@ public class DrawModeActivity extends Activity {
 		
 		//ll.addView(gridview);
 		
-		top_tv = new TextView(this);
-		top_tv.setText("縺ｩ縺ｮ邯壹″繧呈緒縺�");
+		//top_tv = new TextView(this);
+		//top_tv.setText("縺ｩ縺ｮ邯壹″繧呈緒縺�");
 		
 		//ll.addView(top_tv);
 		
