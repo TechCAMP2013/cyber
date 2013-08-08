@@ -3,6 +3,7 @@ package ya.example.manga4;
 import ya.example.manga4.LoginActivity.HowtoClickListener;
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,16 +19,22 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 
 public class DrawActivity extends Activity {
 	DrawView dv;
+	AlertHelper al;
 	ImageView[] setting_iv = new ImageView[4], 
-			brush_iv = new ImageView[6];
-	TextView tv;
-	Button bt;
+				brush_iv = new ImageView[6],
+				previous_iv = new ImageView[1];
+	TextView tv,title_tv;
+	Button bt,pre_bt;
 
 	TableLayout brush_tl1;
 	TableRow[] brush_tr1;
@@ -49,8 +56,17 @@ public class DrawActivity extends Activity {
 		int height = width * 3/4;
 		LayoutParams params = new LinearLayout.LayoutParams(width, height);
 		ll = new LinearLayout(this);
+		
 		ll.setOrientation(LinearLayout.VERTICAL);
 		setContentView(ll);
+		
+		// title
+		Intent title_it = getIntent();
+		String title = title_it.getStringExtra("title");
+		title_tv = new TextView(this);
+		title_tv.setText(title);
+		ll.addView(title_tv);
+		
 
 		dv = new DrawView(this);
 
@@ -154,8 +170,15 @@ public class DrawActivity extends Activity {
 		bt = new Button(this);
 		bt.setText("送信");
 		ll.addView(bt);
-
+		
+		pre_bt = new Button(this);
+		pre_bt.setText("前の画像を見る");
+		ll.addView(pre_bt);
+		
+		
 		bt.setOnClickListener(new BtClickListener());
+		pre_bt.setOnClickListener(new PrebtClickListener());
+		
 		setting_iv[0].setOnClickListener(new ColorClickListener());
 		setting_iv[1].setOnClickListener(new BrushClickListener());
 		setting_iv[2].setOnClickListener(new EraserClickListener());
@@ -261,8 +284,25 @@ public class DrawActivity extends Activity {
 			startActivity( intent2 );
 
 		}
-
 	}
+	Context c = this;
+	class PrebtClickListener implements OnClickListener{
+		DialogInterface.OnClickListener listenerYes = new DialogInterface.OnClickListener(){  
+				public void onClick(DialogInterface dialog, int which) {  
+					 //TODO 自動生成されたメソッド・スタブ
+					Toast.makeText(DrawActivity.this, "Yes", Toast.LENGTH_LONG).show();
+					}
+
+			};
+
+			@Override
+			public void onClick(View v) {
+				// TODO 自動生成されたメソッド・スタブ
+				AlertHelper.showPreImg(c, "", listenerYes, R.drawable.sample1);
+			}
+			
+	}
+	
 
 	class TlClickListener implements OnClickListener{
 
