@@ -23,6 +23,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name="ya.example.manga4.DecideTitleActivity"
@@ -59,6 +60,7 @@
         <activity
             android:name="ya.example.manga4.TopActivity"
             android:label="@string/title_activity_my_gallery" >
+            
         </activity>
         <activity
             android:name="ya.example.manga4.Complete4Activity"

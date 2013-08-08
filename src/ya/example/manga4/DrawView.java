@@ -27,11 +27,11 @@ import android.widget.Toast;
 
 public class DrawView extends View implements OnTouchListener {
 
-	private int type = 0;	//イベントのタイプ
-	private float posx = 0.0f;	//イベントが起きたX座標
-	private float posy = 0.0f;	//イベントが起きたY座標
-	private Path path = null;	//パス
-	private Bitmap bitmap = null;	//Viewの状態を保存するためのBitmap
+	private int type = 0;	//繧､繝吶Φ繝医�繧ｿ繧､繝�	
+	private float posx = 0.0f;	//繧､繝吶Φ繝医′襍ｷ縺阪◆X蠎ｧ讓�	
+	private float posy = 0.0f;	//繧､繝吶Φ繝医′襍ｷ縺阪◆Y蠎ｧ讓�	
+	private Path path = null;	//繝代せ
+	private Bitmap bitmap = null;	//View縺ｮ迥ｶ諷九ｒ菫晏ｭ倥☆繧九◆繧√�Bitmap
 	int haba = 22;
 	String[] color_array = {"0","0","0"};
 	private Canvas bmpCanvas;
@@ -47,44 +47,43 @@ public class DrawView extends View implements OnTouchListener {
 		super(context);
 		_context = (Activity)context;
 		activity = _context;
-		// TODO 閾ｪ蜍慕函謌舌＆繧後◆繧ｳ繝ｳ繧ｹ繝医Λ繧ｯ繧ｿ繝ｼ繝ｻ繧ｹ繧ｿ繝�		
 		setOnTouchListener(this);
 	}
 
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
-		// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�		
+		// TODO 髢ｾ�ｪ陷肴�蜃ｽ隰瑚���ｹｧ蠕娯螺郢晢ｽ｡郢ｧ�ｽ郢晢ｿｽ繝ｩ郢晢ｽｻ郢ｧ�ｹ郢ｧ�ｿ郢晢ｿｽ		
 		try{
 			String act = "";
-			type = event.getAction();	//繧､繝吶Φ繝医�繧ｿ繧､繝�			
-			posx = event.getX();	//繧､繝吶Φ繝医′襍ｷ縺阪◆X蠎ｧ讓�			
-			posy = event.getY();	//繧､繝吶Φ繝医′襍ｷ縺阪◆Y蠎ｧ讓�			
-			//繧､繝吶Φ繝医�繧ｿ繧､繝励＃縺ｨ縺ｫ蜃ｦ逅�ｒ險ｭ螳�			
+			type = event.getAction();	//郢ｧ�､郢晏生ﾎｦ郢晏現�ｽ郢ｧ�ｿ郢ｧ�､郢晢ｿｽ			
+			posx = event.getX();	//郢ｧ�､郢晏生ﾎｦ郢晏現窶ｲ隘搾ｽｷ邵ｺ髦ｪ笳�陟趣ｽｧ隶難ｿｽ			
+			posy = event.getY();	//郢ｧ�､郢晏生ﾎｦ郢晏現窶ｲ隘搾ｽｷ邵ｺ髦ｪ笳�陟趣ｽｧ隶難ｿｽ			
+			//郢ｧ�､郢晏生ﾎｦ郢晏現�ｽ郢ｧ�ｿ郢ｧ�､郢晏干��ｸｺ�ｨ邵ｺ�ｫ陷�ｽｦ騾�ｿｽ�帝坎�ｭ陞ｳ�ｽ			
 			switch(type){
-			case MotionEvent.ACTION_DOWN:	//譛��縺ｮ繝昴う繝ｳ繝�				
-				//繝代せ繧貞�譛溷喧
+			case MotionEvent.ACTION_DOWN:	//隴幢ｿｽ�ｽ邵ｺ�ｮ郢晄亢縺�ｹ晢ｽｳ郢晢ｿｽ				
+				//郢昜ｻ｣縺帷ｹｧ雋橸ｿｽ隴帶ｺｷ蝟ｧ
 				path = new Path();
-				//繝代せ縺ｮ蟋狗せ縺ｸ遘ｻ蜍�				
+				//郢昜ｻ｣縺帷ｸｺ�ｮ陝狗距縺帷ｸｺ�ｸ驕假ｽｻ陷搾ｿｽ				
 				path.moveTo(posx, posy);
 				act = "down";
 				break;
-			case MotionEvent.ACTION_MOVE:	//騾比ｸｭ縺ｮ繝昴う繝ｳ繝�		
-				//縺ｲ縺ｨ縺､蜑阪�繝昴う繝ｳ繝医°繧峨�邱壹ｒ蠑輔￥
+			case MotionEvent.ACTION_MOVE:	//鬨ｾ豈費ｽｸ�ｭ邵ｺ�ｮ郢晄亢縺�ｹ晢ｽｳ郢晢ｿｽ		
+				//邵ｺ�ｲ邵ｺ�ｨ邵ｺ�､陷鷹亂�ｽ郢晄亢縺�ｹ晢ｽｳ郢晏現ﾂｰ郢ｧ蟲ｨ�ｽ驍ｱ螢ｹ�定�霈費ｿ･
 				path.lineTo(posx, posy);
 				act = "move";
 				break;
-			case MotionEvent.ACTION_UP:	//譛�ｾ後�繝昴う繝ｳ繝�			
-				//縺ｲ縺ｨ縺､蜑阪�繝昴う繝ｳ繝医°繧臥ｷ壹ｒ蠑輔￥
+			case MotionEvent.ACTION_UP:	//隴幢ｿｽ�ｾ蠕鯉ｿｽ郢晄亢縺�ｹ晢ｽｳ郢晢ｿｽ			
+				//邵ｺ�ｲ邵ｺ�ｨ邵ｺ�､陷鷹亂�ｽ郢晄亢縺�ｹ晢ｽｳ郢晏現ﾂｰ郢ｧ閾･�ｷ螢ｹ�定�霈費ｿ･
 				path.lineTo(posx, posy);
-				//迴ｾ蝨ｨ縺ｮView繧鍛itmap縺ｫ菫晏ｭ倥☆繧�			
+				//霑ｴ�ｾ陜ｨ�ｨ邵ｺ�ｮView郢ｧ骰嬖tmap邵ｺ�ｫ闖ｫ譎擾ｽｭ蛟･笘�ｹｧ�ｽ			
 				v.setDrawingCacheEnabled(true);
 				bitmap = Bitmap.createBitmap(v.getDrawingCache());
 				v.setDrawingCacheEnabled(false);
 				act = "up";
 			}
-			//繝ｭ繧ｰ繧定ｿｽ蜉�			
+			//郢晢ｽｭ郢ｧ�ｰ郢ｧ螳夲ｽｿ�ｽ陷会ｿｽ			
 			Log.v("MotionEvent","action=" + act + "&x=" + posx + "&y=" + posy);
-			//View繧呈峩譁ｰ縺吶ｋ
+			//View郢ｧ蜻亥ｳｩ隴�ｽｰ邵ｺ蜷ｶ��			
 			v.invalidate();
 			return true;
 		}catch(Exception e){
@@ -97,29 +96,28 @@ public class DrawView extends View implements OnTouchListener {
 	protected void onDraw(Canvas canvas)
 	{
 		super.onDraw(canvas);
-		//閭梧勹繧堤區縺丞｡励ｊ縺､縺ｶ縺�		
+		//髢ｭ譴ｧ蜍ｹ郢ｧ蝣､蜊�ｸｺ荳橸ｽ｡蜉ｱ�顔ｸｺ�､邵ｺ�ｶ邵ｺ�ｽ		
 		canvas.drawColor(Color.WHITE);
 		if(bitmap != null){
-			//菫晏ｭ倥＠縺ｦ縺ゅｋBitmap繧呈緒逕ｻ縺吶ｋ
+			//闖ｫ譎擾ｽｭ蛟･��ｸｺ�ｦ邵ｺ繧�ｽ毅itmap郢ｧ蜻育ｷ帝��ｻ邵ｺ蜷ｶ��			
 			canvas.drawBitmap(bitmap, 0, 0, null);
 		}
 		Paint paint = new Paint();
-		//繧｢繝ｳ繝√お繧､繝ｪ繧｢繧ｹ繧呈怏蜉ｹ縺ｫ縺吶ｋ
+		//郢ｧ�｢郢晢ｽｳ郢昶�縺顔ｹｧ�､郢晢ｽｪ郢ｧ�｢郢ｧ�ｹ郢ｧ蜻域�陷会ｽｹ邵ｺ�ｫ邵ｺ蜷ｶ��		
 		paint.setAntiAlias(true);
-		//髱定牡縲��譏主ｺｦ100
+		//鬮ｱ螳夂横邵ｲ�ｽ�ｽ隴丈ｸｻ�ｺ�ｦ100
 		paint.setColor(Color.argb(255, Integer.valueOf(color_array[0]), Integer.valueOf(color_array[1]), Integer.valueOf(color_array[2])));
-		//邱壹�縺ｿ(蝪励ｊ縺､縺ｶ縺輔↑縺�
+		//驍ｱ螢ｹ�ｽ邵ｺ�ｿ(陜ｪ蜉ｱ�顔ｸｺ�､邵ｺ�ｶ邵ｺ霈披�邵ｺ�ｽ
 		paint.setStyle(Paint.Style.STROKE);
-		//線の太さ8
-		paint.setStrokeWidth(haba);
-		//線の両端を丸くする
 		//邱壹�螟ｪ縺�
-		//邱壹�荳｡遶ｯ繧剃ｸｸ縺上☆繧�		
+		paint.setStrokeWidth(haba);
+		//邱壹�荳｡遶ｯ繧剃ｸｸ縺上☆繧�		//驍ｱ螢ｹ�ｽ陞滂ｽｪ邵ｺ�ｽ
+		//驍ｱ螢ｹ�ｽ闕ｳ�｡驕ｶ�ｯ郢ｧ蜑�ｽｸ�ｸ邵ｺ荳岩�郢ｧ�ｽ		
 		paint.setStrokeCap(Paint.Cap.ROUND);
-		//邱壹�縺､縺ｪ縺守岼繧剃ｸｸ縺上☆繧�		
+		//驍ｱ螢ｹ�ｽ邵ｺ�､邵ｺ�ｪ邵ｺ螳亥ｲｼ郢ｧ蜑�ｽｸ�ｸ邵ｺ荳岩�郢ｧ�ｽ		
 		paint.setStrokeJoin(Paint.Join.ROUND);
 		if(path != null){
-			//繝代せ繧呈緒逕ｻ縺吶ｋ
+			//郢昜ｻ｣縺帷ｹｧ蜻育ｷ帝��ｻ邵ｺ蜷ｶ��			
 			canvas.drawPath(path, paint);
 		}
 	}
@@ -134,7 +132,7 @@ public class DrawView extends View implements OnTouchListener {
 		}
 	public void saveToFile(){
 		 if(!sdcardWriteReady()){
-		 Toast.makeText(_context, "SDCARDが認識されません。", Toast.LENGTH_SHORT).show();
+		 Toast.makeText(_context, "SDCARD縺瑚ｪ崎ｭ倥＆繧後∪縺帙ｓ縲�", Toast.LENGTH_SHORT).show();
 		 return;
 		 }
 		 // test
@@ -160,9 +158,9 @@ public class DrawView extends View implements OnTouchListener {
 			    bitmap.compress(CompressFormat.JPEG, 100, out);
 			    out.flush();
 			    out.close();
-			    Toast.makeText(_context, "保存されました。", Toast.LENGTH_SHORT).show();
+			    Toast.makeText(_context, "菫晏ｭ倥＆繧後∪縺励◆縲�", Toast.LENGTH_SHORT).show();
 			} catch(Exception e) {
-			    Toast.makeText(_context, "例外発生", Toast.LENGTH_SHORT).show();
+			    Toast.makeText(_context, "萓句､也匱逕�", Toast.LENGTH_SHORT).show();
 			}
 	
 			AsyncHttpFile asyncHttpFile = new AsyncHttpFile(saveFile);

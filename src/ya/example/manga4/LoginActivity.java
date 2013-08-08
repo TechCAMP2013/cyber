@@ -3,9 +3,10 @@ package ya.example.manga4;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Layout;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,14 +16,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class LoginActivity extends HttpActivity {
+public class LoginActivity extends HttpActivity {  // Httpつける
 	TextView name_tv,pass_tv,test_tv;
 	EditText name_et,pass_et;
 	Button decide_bt, howto_bt;
-	HttpActivity activity = this;
 	ImageView iv;
+	HttpActivity activity = this;		//this line
 	
-	public void receiveMessage(Map<String, Object> map)
+	public void receiveMessage(Map<String, Object> map)    //this
 	{
 		if ("login".equals(map.get("id")))
 		{
@@ -30,13 +31,13 @@ public class LoginActivity extends HttpActivity {
 			{
 				test_tv.setText("");
 				Intent intent;
-				intent = new Intent(LoginActivity.this, DrawModeActivity.class );
-				// 驕ｷ遘ｻ蜈医�繧｢繧ｯ繝�ぅ繝薙ユ繧｣繧定ｵｷ蜍輔＆縺帙ｋ
+				intent = new Intent(LoginActivity.this, TopActivity.class );
+				// 鬩包ｽｷ驕假ｽｻ陷亥現�ｽ郢ｧ�｢郢ｧ�ｯ郢晢ｿｽ縺�ｹ晁侭繝ｦ郢ｧ�｣郢ｧ螳夲ｽｵ�ｷ陷崎ｼ費ｼ�ｸｺ蟶呻ｽ�				
 				startActivity( intent );
 			}
 			else
 			{
-				test_tv.setText("違うだろうが！");
+				test_tv.setText("passかuserが間違ってます");
 			}
 		}
 		else
@@ -54,19 +55,20 @@ public class LoginActivity extends HttpActivity {
 		ll.setOrientation(LinearLayout.VERTICAL);
 		setContentView(ll);
 		
+
 		name_tv = new TextView(this);
-		name_tv.setText("蜷榊燕繧貞�蜉帙＠縺ｦ縺上□縺輔＞");
+		name_tv.setText("ユーザ名を入力してください");
 		name_et = new EditText(this);
 		
 		pass_tv = new TextView(this);
-		pass_tv.setText("繝代せ繝ｯ繝ｼ繝峨ｒ蜈･蜉帙＠縺ｦ縺上□縺輔＞");
+		pass_tv.setText("パスワードを入力してください");
 		pass_et = new EditText(this);
 		
 		decide_bt = new Button(this);
-		decide_bt.setText("豎ｺ螳�");
+		decide_bt.setText("決定");
 		
 		howto_bt = new Button(this);
-		howto_bt.setText("隱ｬ譏�");
+		howto_bt.setText("使い方");
 		
 		test_tv = new TextView(this);
 		test_tv.setText("");
@@ -103,13 +105,13 @@ public class LoginActivity extends HttpActivity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
-			test_tv.setText("ログインしています・・・");
+			// TODO 髢ｾ�ｪ陷肴�蜃ｽ隰瑚���ｹｧ蠕娯螺郢晢ｽ｡郢ｧ�ｽ郢晢ｿｽ繝ｩ郢晢ｽｻ郢ｧ�ｹ郢ｧ�ｿ郢晢ｿｽ			
+			test_tv.setText("ユーザー名を入力してください");
 			
-			HashMap<String, Object> data = new HashMap<String, Object>();
+			HashMap<String, Object> data = new HashMap<String, Object>();		//koko
 			data.put("id","login");
 			data.put("name", name_et.getText().toString());
-			data.put("pass", pass_et.getText().toString());
+			data.put("pass", pass_et.getText().toString());						
 			AsyncHttpPost asyncHttpPost = new AsyncHttpPost(data, activity);
 			asyncHttpPost.send();
 		}
@@ -119,11 +121,11 @@ public class LoginActivity extends HttpActivity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
-			test_tv.setText("隱ｬ譏取款縺励◆蠕後�蜃ｦ逅�％縺�");
+			// TODO 髢ｾ�ｪ陷肴�蜃ｽ隰瑚���ｹｧ蠕娯螺郢晢ｽ｡郢ｧ�ｽ郢晢ｿｽ繝ｩ郢晢ｽｻ郢ｧ�ｹ郢ｧ�ｿ郢晢ｿｽ			
+			test_tv.setText("使い方");
 			Intent intent2;
-			intent2 = new Intent(LoginActivity.this, DrawModeActivity.class );
-			// 驕ｷ遘ｻ蜈医�繧｢繧ｯ繝�ぅ繝薙ユ繧｣繧定ｵｷ蜍輔＆縺帙ｋ
+			intent2 = new Intent(LoginActivity.this, HowToActivity.class );
+			// 鬩包ｽｷ驕假ｽｻ陷亥現�ｽ郢ｧ�｢郢ｧ�ｯ郢晢ｿｽ縺�ｹ晁侭繝ｦ郢ｧ�｣郢ｧ螳夲ｽｵ�ｷ陷崎ｼ費ｼ�ｸｺ蟶呻ｽ�			
 			startActivity( intent2 );
 		}
 		

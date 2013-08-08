@@ -105,7 +105,9 @@ public class AsyncHttpFile extends AsyncTask<String, String, String> {
      */
     @Override
     protected void onPostExecute(String result) {
-    	DrawView.show(result);
+
+    	//DrawView.show(result);
+
     }
 }
 

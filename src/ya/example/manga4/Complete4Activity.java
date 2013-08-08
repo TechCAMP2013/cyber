@@ -15,7 +15,6 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
-
 import android.widget.Toast;
 
 public class Complete4Activity extends Activity {
@@ -89,7 +88,7 @@ public class Complete4Activity extends Activity {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_complete4);
 	    Button button = (Button) findViewById(R.id.button1);
-		// ボタンオブジェクトにクリックリスナー設定
+		// 繝懊ち繝ｳ繧ｪ繝悶ず繧ｧ繧ｯ繝医↓繧ｯ繝ｪ繝�け繝ｪ繧ｹ繝翫�險ｭ螳�	    button.setOnClickListener(new ButtonClickListener());
 	    button.setOnClickListener(new ButtonClickListener());
 
 	    GridView gridview = (GridView) findViewById(R.id.gridview);

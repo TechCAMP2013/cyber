@@ -45,11 +45,11 @@ public class DrawActivity extends Activity {
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//逕ｻ髱｢繧ｵ繧､繧ｺ縺ｮ蜿門ｾ�		
+		//騾包ｽｻ鬮ｱ�｢郢ｧ�ｵ郢ｧ�､郢ｧ�ｺ邵ｺ�ｮ陷ｿ髢�ｽｾ�ｽ		
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 		Display display = wm.getDefaultDisplay();
 
-		//逕ｻ髱｢繧ｵ繧､繧ｺ縺ｮ4蛻��1繧歎iew縺ｮ繧ｵ繧､繧ｺ縺ｨ縺励※險ｭ螳壹☆繧�		
+		//騾包ｽｻ鬮ｱ�｢郢ｧ�ｵ郢ｧ�､郢ｧ�ｺ邵ｺ�ｮ4陋ｻ�ｽ�ｽ1郢ｧ豁司ew邵ｺ�ｮ郢ｧ�ｵ郢ｧ�､郢ｧ�ｺ邵ｺ�ｨ邵ｺ蜉ｱ窶ｻ髫ｪ�ｭ陞ｳ螢ｹ笘�ｹｧ�ｽ		
 		int w = display.getWidth();
 		int h = display.getHeight();
 		int width =w;
@@ -72,7 +72,7 @@ public class DrawActivity extends Activity {
 
 		ll.addView(dv,params);		
 
-		// ここから各設定の詳細へ
+		// 縺薙％縺九ｉ蜷�ｨｭ螳壹�隧ｳ邏ｰ縺ｸ
 
 
 
@@ -164,11 +164,11 @@ public class DrawActivity extends Activity {
 
 
 		//tv = new TextView(this);
-		//tv.setText("ここ");
+		//tv.setText("縺薙％");
 		//ll.addView(tv);
 
 		bt = new Button(this);
-		bt.setText("送信");
+		bt.setText("決定");
 		ll.addView(bt);
 		
 		pre_bt = new Button(this);
@@ -200,14 +200,14 @@ public class DrawActivity extends Activity {
 		return new LinearLayout.LayoutParams(w, h);
 	}
 	
-	/** メニューの生成イベント */
+	/** 繝｡繝九Η繝ｼ縺ｮ逕滓�繧､繝吶Φ繝�*/
 	 @Override
 	 public boolean onCreateOptionsMenu(Menu menu) {
 	 super.onCreateOptionsMenu(menu);
 	 getMenuInflater().inflate(R.menu.menu,menu);  
 	 return true;
 	 }
-	 /** メニューがクリックされた時のイベント */
+	 /** 繝｡繝九Η繝ｼ縺後け繝ｪ繝�け縺輔ｌ縺滓凾縺ｮ繧､繝吶Φ繝�*/
 	 @Override
 	 public boolean onOptionsItemSelected(MenuItem item) {
 	 switch ( item.getItemId() ) {
@@ -228,10 +228,9 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
-			//tv.setText("color");
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			//tv.setText("color");
 			Intent intent = new Intent(DrawActivity.this, SelectColorActivity.class);
-			// サブ画面の呼び出し
+			// 繧ｵ繝也判髱｢縺ｮ蜻ｼ縺ｳ蜃ｺ縺�			
 			startActivityForResult(intent, SELECTCOLOR_ACTIVITY);
 		}
 
@@ -240,8 +239,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
-			//tv.setText("brush");
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			//tv.setText("brush");
 			if(brush_tl1.getVisibility() == 0){
 				brush_tl1.setVisibility(View.GONE);
 			}else{
@@ -257,8 +255,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
-			//tv.setText("eraser");
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			//tv.setText("eraser");
 		}
 
 	}
@@ -266,8 +263,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
-			//tv.setText("stamp");
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			//tv.setText("stamp");
 		}
 
 	}
@@ -276,11 +272,10 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
-			dv.saveToFile();
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			dv.saveToFile();
 			Intent intent2;
 			intent2 = new Intent(DrawActivity.this, TopActivity.class );
-			// 遷移先のアクティビティを起動させる
+			// 驕ｷ遘ｻ蜈医�繧｢繧ｯ繝�ぅ繝薙ユ繧｣繧定ｵｷ蜍輔＆縺帙ｋ
 			startActivity( intent2 );
 
 		}
@@ -308,8 +303,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
-			System.out.println("vは？"+v);
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			System.out.println("v縺ｯ��+v);
 			System.out.println(v.getId());
 		}
 
@@ -319,8 +313,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
-			dv.haba = 2;
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			dv.haba = 2;
 		}
 
 	}
@@ -329,7 +322,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
 			dv.haba = 22;
 		}
 
@@ -338,7 +331,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
 			dv.haba = 42;
 		}
 
@@ -347,7 +340,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
 			dv.haba = 62;
 		}
 
@@ -356,7 +349,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
 			dv.haba = 82;
 		}
 
@@ -365,7 +358,7 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 自動生成されたメソッド・スタブ
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
 			dv.haba = 100;
 		}
 
