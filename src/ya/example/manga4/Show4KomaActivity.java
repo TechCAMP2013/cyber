@@ -29,7 +29,7 @@ public class Show4KomaActivity extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		/*LinearLayout linearLayout = new LinearLayout(this);
+		LinearLayout linearLayout = new LinearLayout(this);
 
 		  TextView tv = new TextView(this);
 		  tv.setText("ボタン1");
@@ -37,7 +37,7 @@ public class Show4KomaActivity extends Activity implements OnClickListener {
 		    LinearLayout.LayoutParams.WRAP_CONTENT, 
 		    LinearLayout.LayoutParams.WRAP_CONTENT));
 		  setContentView(linearLayout);
-		 */
+		 
 		_btnList.add((ImageButton) findViewById(R.id.btn_start));
 		_btnList.add((ImageButton) findViewById(R.id.btn_prev));
 		_btnList.add((ImageButton) findViewById(R.id.btn_next));
