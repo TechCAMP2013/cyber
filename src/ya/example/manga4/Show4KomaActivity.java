@@ -7,6 +7,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.Layout;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -27,15 +29,15 @@ public class Show4KomaActivity extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		 View linearLayout =  findViewById(R.id.info);
-	        //LinearLayout layout = (LinearLayout) findViewById(R.id.info);
+		/*LinearLayout linearLayout = new LinearLayout(this);
 
-
-	        TextView valueTV = new TextView(this);
-	        valueTV.setText("hallo hallo");
-	        valueTV.setId(5);
-	        valueTV.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT));
-	        ((LinearLayout) linearLayout).addView(valueTV);
+		  TextView tv = new TextView(this);
+		  tv.setText("ボタン1");
+		  linearLayout.addView(tv, new LinearLayout.LayoutParams(
+		    LinearLayout.LayoutParams.WRAP_CONTENT, 
+		    LinearLayout.LayoutParams.WRAP_CONTENT));
+		  setContentView(linearLayout);
+		 */
 		_btnList.add((ImageButton) findViewById(R.id.btn_start));
 		_btnList.add((ImageButton) findViewById(R.id.btn_prev));
 		_btnList.add((ImageButton) findViewById(R.id.btn_next));

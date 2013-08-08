@@ -17,9 +17,9 @@ public class HowToActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_how_to);
 		
-		// ボタンオブジェクト取得
+		// 繝懊ち繝ｳ繧ｪ繝悶ず繧ｧ繧ｯ繝亥叙蠕�		
 		Button button = (Button) findViewById(R.id.button1);
-				// ボタンオブジェクトにクリックリスナー設定
+				// 繝懊ち繝ｳ繧ｪ繝悶ず繧ｧ繧ｯ繝医↓繧ｯ繝ｪ繝�け繝ｪ繧ｹ繝翫�險ｭ螳�		
 		button.setOnClickListener(new ButtonClickListener());
 	}
 	
