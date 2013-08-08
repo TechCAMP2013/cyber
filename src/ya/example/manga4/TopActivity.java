@@ -78,7 +78,7 @@ public class TopActivity extends HttpActivity {
 	}
 	class Button2ClickListener implements OnClickListener{
 		public void onClick(View v){
-			Intent intent =new Intent(TopActivity.this,Show4KomaActivity.class);
+			Intent intent =new Intent(TopActivity.this,PreviousKomaActivity.class);
 			startActivity(intent);
 		}
 	}

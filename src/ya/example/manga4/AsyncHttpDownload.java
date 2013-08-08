@@ -39,13 +39,15 @@ public class AsyncHttpDownload extends AsyncTask<String, Void, Bitmap> {
     
     String url;
     ImageView img;
+    HttpActivity activity;
 
     /**
      * constructor
      */
-    public AsyncHttpDownload(String url, ImageView img) {
+    public AsyncHttpDownload(String url, ImageView img, HttpActivity activity) {
         this.img = img;
-        this.url = "http://133.242.188.195:8080/cyber4koma/images/" + url;
+        this.url = "http://133.242.188.195:8080/cyber4koma_images/" + url;
+        this.activity = activity;
     }
     
     public void send()
@@ -75,6 +77,10 @@ public class AsyncHttpDownload extends AsyncTask<String, Void, Bitmap> {
     @Override
     protected void onPostExecute(Bitmap result) {
     	img.setImageBitmap(result);
+    	if (activity != null)
+    	{
+    		((MyGalleryActivity)activity).receiveImage(img);
+    	}
     }
 }
 

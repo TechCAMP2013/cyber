@@ -1,5 +1,8 @@
 package ya.example.manga4;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import ya.example.manga4.DrawModeActivity.NewClickListener;
 import android.app.Activity;
 import android.content.Intent;
@@ -11,10 +14,26 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class DecideTitleActivity extends Activity {
+public class DecideTitleActivity extends HttpActivity {
 	TextView title_tv;
 	EditText title_et;
 	Button decide_bt;
+	
+	HttpActivity activity = this;
+	Intent intent;
+	
+	public void receiveMessage(Map<String, Object> map)    //this
+	{
+		if ("drawStartNew".equals(map.get("id")))
+		{
+			startActivity( intent );
+		}
+		else
+		{
+		}
+	
+		//test_tv.setText("result: " + map.toString());
+	}
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,6 +41,8 @@ public class DecideTitleActivity extends Activity {
 		LinearLayout ll = new LinearLayout(this);
 		ll.setOrientation(LinearLayout.VERTICAL);
 		setContentView(ll);
+		
+		
 		
 		title_tv = new TextView(this);
 		title_tv.setText("タイトルを決定してください");
@@ -44,12 +65,18 @@ public class DecideTitleActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO �ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ
-			Intent intent;
+			
 			intent = new Intent(DecideTitleActivity.this, DrawActivity.class );
 			
 			intent.putExtra("title",title_et.getText().toString());
 			
-			startActivity( intent );
+			
+			HashMap<String, Object> data = new HashMap<String, Object>();		//koko
+			data.put("id","drawStartNew");
+			data.put("title", title_et.getText().toString());					
+			AsyncHttpPost asyncHttpPost = new AsyncHttpPost(data, activity);
+			asyncHttpPost.send();
+			
 		}
 		
 	}

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Menu;
@@ -42,6 +43,8 @@ public class DrawActivity extends Activity {
 	LinearLayout ll;
 	
 	Bitmap precolor_bmp1;
+	
+	ImageView prevImg;
 
 	private static final int SELECTCOLOR_ACTIVITY = 1001;
 
@@ -50,6 +53,15 @@ public class DrawActivity extends Activity {
 		//騾包ｽｻ鬮ｱ�｢郢ｧ�ｵ郢ｧ�､郢ｧ�ｺ邵ｺ�ｮ陷ｿ髢�ｽｾ�ｽ		
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 		Display display = wm.getDefaultDisplay();
+		
+		Intent title_it = getIntent();
+		String fname = title_it.getStringExtra("fname");
+		if (fname != null)
+		{
+			prevImg = new ImageView(c);
+			AsyncHttpDownload asyncHttpDownload = new AsyncHttpDownload(fname,prevImg, null);
+			asyncHttpDownload.send();
+		}
 
 		//騾包ｽｻ鬮ｱ�｢郢ｧ�ｵ郢ｧ�､郢ｧ�ｺ邵ｺ�ｮ4陋ｻ�ｽ�ｽ1郢ｧ豁司ew邵ｺ�ｮ郢ｧ�ｵ郢ｧ�､郢ｧ�ｺ邵ｺ�ｨ邵ｺ蜉ｱ窶ｻ髫ｪ�ｭ陞ｳ螢ｹ笘�ｹｧ�ｽ		
 		int w = display.getWidth();
@@ -63,7 +75,6 @@ public class DrawActivity extends Activity {
 		setContentView(ll);
 		
 		// title
-		Intent title_it = getIntent();
 		String title = title_it.getStringExtra("title");
 		title_tv = new TextView(this);
 		title_tv.setText(title);
@@ -274,7 +285,8 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			dv.saveToFile();
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
+			dv.saveToFile();
 			Intent intent2;
 			intent2 = new Intent(DrawActivity.this, TopActivity.class );
 			// 驕ｷ遘ｻ蜈医�繧｢繧ｯ繝�ぅ繝薙ユ繧｣繧定ｵｷ蜍輔＆縺帙ｋ
@@ -294,9 +306,14 @@ public class DrawActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO 自動生成されたメソッド・スタブ
-				precolor_bmp1 = BitmapFactory.decodeResource(getResources(), R.drawable.color);
-				AlertHelper.showPreImg(c, "", listenerYes, precolor_bmp1);
+				if (prevImg != null)
+				{
+		    		//precolor_bmp1 = BitmapFactory.decodeResource(getResources(), R.drawable.color);
+					AlertHelper.showPreImg(c, "", listenerYes, ((BitmapDrawable)prevImg.getDrawable()).getBitmap());
+				}
+
+				
+				
 			}
 			
 	}
@@ -306,7 +323,8 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			System.out.println("v縺ｯ��+v);
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
+			System.out.println("v縺ｯ��+v");
 			System.out.println(v.getId());
 		}
 
@@ -316,7 +334,8 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			dv.haba = 2;
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
+			dv.haba = 2;
 		}
 
 	}

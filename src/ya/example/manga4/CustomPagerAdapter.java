@@ -24,12 +24,17 @@ public class CustomPagerAdapter extends PagerAdapter {
 
 	@Override
 	public Object instantiateItem(ViewGroup container, int position) {
+		
+		System.out.println("THIS THING HERE");
+		
 		LinearLayout layout = (LinearLayout) _inflater.inflate(R.layout.page, null);
 		int brt = 255*position/N;
-		layout.setBackgroundColor(Color.rgb(brt,brt,brt));//“K“–‚ÉF‚ğƒZƒbƒg(‚µ‚È‚­‚Ä‚¢‚¢)
+		layout.setBackgroundColor(Color.rgb(brt,brt,brt));//ï¿½Kï¿½ï¿½ï¿½ÉFï¿½ï¿½ï¿½Zï¿½bï¿½g(ï¿½ï¿½ï¿½È‚ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½)
 		ImageView img = (ImageView) layout.findViewById(R.id.img_scroll);
-		int rsrc[] = { R.drawable.sample1, R.drawable.sample2, R.drawable.sample3, R.drawable.sample4 };
-		img.setImageResource(rsrc[position]);
+		//int rsrc[] = { R.drawable.sample1, R.drawable.sample2, R.drawable.sample3, R.drawable.sample4 };
+		//img.setImageResource(rsrc[position]);
+		ImageView iv = MyGalleryActivity.images[position];
+		img.setImageDrawable(iv.getDrawable());
 		container.addView(layout);
 		return layout;
 	}
