@@ -1,14 +1,21 @@
 package ya.example.manga4;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+
 import ya.example.manga4.LoginActivity.HowtoClickListener;
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -26,49 +33,61 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
 
 public class DrawActivity extends Activity {
 	DrawView dv;
 	AlertHelper al;
 	ImageView[] setting_iv = new ImageView[4], 
-				brush_iv = new ImageView[6],
-				previous_iv = new ImageView[1];
+			brush_iv = new ImageView[6],
+			stamp_iv = new ImageView[2],
+			previous_iv = new ImageView[1];
 	TextView tv,title_tv;
 	Button bt,pre_bt;
+	String[] info4koma;
 
-	TableLayout brush_tl1;
-	TableRow[] brush_tr1;
+	TableLayout brush_tl1,
+	stamp_tl;
+	TableRow[] brush_tr1,
+	stamp_tr;
 
 	LinearLayout ll;
+
+	public static Bitmap precolor_bmp1,bmp,back_bitmap;
 	
-	Bitmap precolor_bmp1;
+	public static int GALLERY_APP = 1;
+	public static int REQUEST_CROP_PICK =2;
 
 	private static final int SELECTCOLOR_ACTIVITY = 1001;
+	
+	
+	int w;
+	int h;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		//騾包ｽｻ鬮ｱ�｢郢ｧ�ｵ郢ｧ�､郢ｧ�ｺ邵ｺ�ｮ陷ｿ髢�ｽｾ�ｽ		
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
 		Display display = wm.getDefaultDisplay();
-
+		w = display.getWidth();
+		h = display.getHeight();
 		//騾包ｽｻ鬮ｱ�｢郢ｧ�ｵ郢ｧ�､郢ｧ�ｺ邵ｺ�ｮ4陋ｻ�ｽ�ｽ1郢ｧ豁司ew邵ｺ�ｮ郢ｧ�ｵ郢ｧ�､郢ｧ�ｺ邵ｺ�ｨ邵ｺ蜉ｱ窶ｻ髫ｪ�ｭ陞ｳ螢ｹ笘�ｹｧ�ｽ		
-		int w = display.getWidth();
-		int h = display.getHeight();
+		
 		int width =w;
 		int height = width * 3/4;
 		LayoutParams params = new LinearLayout.LayoutParams(width, height);
 		ll = new LinearLayout(this);
-		
+
 		ll.setOrientation(LinearLayout.VERTICAL);
 		setContentView(ll);
-		
+
 		// title
 		Intent title_it = getIntent();
 		String title = title_it.getStringExtra("title");
 		title_tv = new TextView(this);
 		title_tv.setText(title);
 		ll.addView(title_tv);
-		
+
 
 		dv = new DrawView(this);
 
@@ -163,6 +182,28 @@ public class DrawActivity extends Activity {
 		ll.addView(brush_tl1);
 		brush_tl1.setVisibility(View.GONE);
 
+		Bitmap b_yama = BitmapFactory.decodeResource(getResources(), R.drawable.yama);
+		Bitmap b_huki = BitmapFactory.decodeResource(getResources(), R.drawable.huki);
+
+		Bitmap b_yama_bm = Bitmap.createScaledBitmap(b_yama, w/2, b_yama.getHeight(), false);
+		Bitmap b_huki_bm = Bitmap.createScaledBitmap(b_huki, w/2, b_huki.getHeight(), false);
+
+		stamp_tl = new TableLayout(this);
+		stamp_tr = new TableRow[1];
+
+		stamp_iv[0] = new ImageView(this);
+		stamp_iv[0].setImageBitmap(b_yama_bm);
+		stamp_iv[1] = new ImageView(this);
+		stamp_iv[1].setImageBitmap(b_huki_bm);
+
+		stamp_tr[0] = new TableRow(this);
+
+		stamp_tr[0].addView(stamp_iv[0]);
+		stamp_tr[0].addView(stamp_iv[1]);
+
+		stamp_tl.addView(stamp_tr[0]);
+		ll.addView(stamp_tl);
+		stamp_tl.setVisibility(View.GONE);
 
 
 		//tv = new TextView(this);
@@ -172,15 +213,20 @@ public class DrawActivity extends Activity {
 		bt = new Button(this);
 		bt.setText("決定");
 		ll.addView(bt);
-		
+
 		pre_bt = new Button(this);
 		pre_bt.setText("前の画像を見る");
 		ll.addView(pre_bt);
-		
-		
+
+		Intent intent = getIntent();  
+		info4koma = intent.getStringArrayExtra("info4koma");
+		//Bundle b = intent.getExtras();  
+		//bmp = (Bitmap)b.get("bitmapdata");
+
+
 		bt.setOnClickListener(new BtClickListener());
 		pre_bt.setOnClickListener(new PrebtClickListener());
-		
+
 		setting_iv[0].setOnClickListener(new ColorClickListener());
 		setting_iv[1].setOnClickListener(new BrushClickListener());
 		setting_iv[2].setOnClickListener(new EraserClickListener());
@@ -193,7 +239,10 @@ public class DrawActivity extends Activity {
 		brush_iv[4].setOnClickListener(new B_82ClickListener());
 		brush_iv[5].setOnClickListener(new B_100ClickListener());
 
+		stamp_iv[0].setOnClickListener(new YamaClickListener());
+
 		brush_tl1.setOnClickListener(new TlClickListener());
+
 
 
 		//setContentView(new DrawView(this));
@@ -201,30 +250,30 @@ public class DrawActivity extends Activity {
 	private LinearLayout.LayoutParams createParam(int w, int h){
 		return new LinearLayout.LayoutParams(w, h);
 	}
-	
+
 	/** 繝｡繝九Η繝ｼ縺ｮ逕滓�繧､繝吶Φ繝�*/
-	 @Override
-	 public boolean onCreateOptionsMenu(Menu menu) {
-	 super.onCreateOptionsMenu(menu);
-	 getMenuInflater().inflate(R.menu.menu,menu);  
-	 return true;
-	 }
-	 /** 繝｡繝九Η繝ｼ縺後け繝ｪ繝�け縺輔ｌ縺滓凾縺ｮ繧､繝吶Φ繝�*/
-	 @Override
-	 public boolean onOptionsItemSelected(MenuItem item) {
-	 switch ( item.getItemId() ) {
-	 case R.id.item1:
-	 dv.clearDrawList(); 
-	 break;
-	 case R.id.item2:
-	 dv.saveToFile();
-	 break;
-	 case R.id.item3:
-	 finish();
-	 break;
-	 }
-	 return true;
-	 }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.menu,menu);  
+		return true;
+	}
+	/** 繝｡繝九Η繝ｼ縺後け繝ｪ繝�け縺輔ｌ縺滓凾縺ｮ繧､繝吶Φ繝�*/
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch ( item.getItemId() ) {
+		case R.id.item1:
+			dv.clearDrawList(); 
+			break;
+		case R.id.item2:
+			dv.saveToFile();
+			break;
+		case R.id.item3:
+			finish();
+			break;
+		}
+		return true;
+	}
 
 	class ColorClickListener implements OnClickListener{
 
@@ -265,7 +314,13 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			//tv.setText("stamp");
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
+			//tv.setText("stamp");
+			if(stamp_tl.getVisibility() == 0){
+				stamp_tl.setVisibility(View.GONE);
+			}else{
+				stamp_tl.setVisibility(View.VISIBLE);
+			}
 		}
 
 	}
@@ -274,7 +329,8 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			dv.saveToFile();
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
+			dv.saveToFile();
 			Intent intent2;
 			intent2 = new Intent(DrawActivity.this, TopActivity.class );
 			// 驕ｷ遘ｻ蜈医�繧｢繧ｯ繝�ぅ繝薙ユ繧｣繧定ｵｷ蜍輔＆縺帙ｋ
@@ -285,22 +341,22 @@ public class DrawActivity extends Activity {
 	Context c = this;
 	class PrebtClickListener implements OnClickListener{
 		DialogInterface.OnClickListener listenerYes = new DialogInterface.OnClickListener(){  
-				public void onClick(DialogInterface dialog, int which) {  
-					 //TODO 自動生成されたメソッド・スタブ
-					Toast.makeText(DrawActivity.this, "Yes", Toast.LENGTH_LONG).show();
-					}
-
-			};
-
-			@Override
-			public void onClick(View v) {
-				// TODO 自動生成されたメソッド・スタブ
-				precolor_bmp1 = BitmapFactory.decodeResource(getResources(), R.drawable.color);
-				AlertHelper.showPreImg(c, "", listenerYes, precolor_bmp1);
+			public void onClick(DialogInterface dialog, int which) {  
+				//TODO 自動生成されたメソッド・スタブ
+				Toast.makeText(DrawActivity.this, "Yes", Toast.LENGTH_LONG).show();
 			}
-			
+
+		};
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			precolor_bmp1 = BitmapFactory.decodeResource(getResources(), R.drawable.color);
+			//precolor_bmp1 = v.getDrawingCache();
+			AlertHelper.showPreImg(c, "", listenerYes, bmp);
+		}
 	}
-	
+
 
 	class TlClickListener implements OnClickListener{
 
@@ -316,7 +372,8 @@ public class DrawActivity extends Activity {
 
 		@Override
 		public void onClick(View v) {
-			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			dv.haba = 2;
+			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
+			dv.haba = 2;
 		}
 
 	}
@@ -367,37 +424,84 @@ public class DrawActivity extends Activity {
 
 	}
 
+	class YamaClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+			Intent it = new Intent();
+			it.setType("image/*");
+			it.setAction(Intent.ACTION_GET_CONTENT);
+			startActivityForResult(it,GALLERY_APP);
+
+
+		}
+	}
+
+	class HukiClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			// TODO 自動生成されたメソッド・スタブ
+
+
+		}
+
+	}
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == SELECTCOLOR_ACTIVITY) {
-	if(resultCode == RESULT_OK){
-		//dv.color_array = data.getStringArrayExtra("color");
-		//System.out.println(data.getStringArray("color"));
-		//Object[] obj = (Object[])data.getSerializableExtra("color");
-		//String[] obj;
-		//obj = data.getStringArrayExtra("color");
-		// Object[]として取り出す
-		Object[] obj = (Object[])data.getSerializableExtra("color");
+			if(resultCode == RESULT_OK){
+				//dv.color_array = data.getStringArrayExtra("color");
+				//System.out.println(data.getStringArray("color"));
+				//Object[] obj = (Object[])data.getSerializableExtra("color");
+				//String[] obj;
+				//obj = data.getStringArrayExtra("color");
+				// Object[]として取り出す
+				Object[] obj = (Object[])data.getSerializableExtra("color");
 
-		// データの配列を生成する
-		String[] data_a = new String[obj.length];
+				// データの配列を生成する
+				String[] data_a = new String[obj.length];
 
-		// 配列に詰めなおす
-		for(int i=0; i<obj.length; i++)
-		{
-		  data_a[i] = (String)obj[i];
-		}
-		//dv.color_array[0] = (String) obj[0];
-		//dv.color_array[1] = (String) obj[1];
-		//dv.color_array[2] = (String) obj[2];
-		dv.color_array[0] = data_a[0];
-		dv.color_array[1] = data_a[1];
-		dv.color_array[2] = data_a[2];
-		
-		System.out.println("0="+dv.color_array[0]+",1="+dv.color_array[1]+",2="+dv.color_array[2]);
-		System.out.println("0="+data_a[0]+",1="+data_a[1]+",2="+data_a[2]);
-		
-	}
+				// 配列に詰めなおす
+				for(int i=0; i<obj.length; i++)
+				{
+					data_a[i] = (String)obj[i];
+				}
+				//dv.color_array[0] = (String) obj[0];
+				//dv.color_array[1] = (String) obj[1];
+				//dv.color_array[2] = (String) obj[2];
+				dv.color_array[0] = data_a[0];
+				dv.color_array[1] = data_a[1];
+				dv.color_array[2] = data_a[2];
+
+				System.out.println("0="+dv.color_array[0]+",1="+dv.color_array[1]+",2="+dv.color_array[2]);
+				System.out.println("0="+data_a[0]+",1="+data_a[1]+",2="+data_a[2]);
+
+			}
+		}else if (requestCode == GALLERY_APP && resultCode == RESULT_OK){
+			try{
+				Uri u = data.getData();
+				//InputStream is = getContentResolver().openInputStream(u);
+				//Bitmap bmp = BitmapFactory.decodeStream(is);
+				Intent intent = new Intent("com.android.camera.action.CROP");
+		        intent.setData(u);
+		        intent.putExtra("outputX", 200);
+		        intent.putExtra("outputY", 200);
+		        intent.putExtra("aspectX", 4);
+		        intent.putExtra("aspectY", 3);
+		        intent.putExtra("scale", true);
+		        intent.putExtra("return-data", true);
+		        startActivityForResult(intent, REQUEST_CROP_PICK);
+			}catch(Exception e){
+				
+			}
+		}else if(requestCode == REQUEST_CROP_PICK){
+			 if (resultCode != RESULT_OK) return;
+			 Bitmap back_bmp = data.getExtras().getParcelable("data");
+			 back_bitmap = Bitmap.createScaledBitmap(back_bmp, w, back_bmp.getHeight()*(w/back_bmp.getWidth()), false);
+			 dv.back = 1;
 		}
 	}
 }

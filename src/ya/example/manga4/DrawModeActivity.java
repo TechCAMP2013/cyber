@@ -31,7 +31,7 @@ public class DrawModeActivity extends Activity {
 		private Context mContext;
 
 		public ImageAdapter(Context c) {
-			mContext = c; 
+			mContext = c;
 		}
 
 		public int getCount() {
@@ -105,17 +105,34 @@ public class DrawModeActivity extends Activity {
 		gridview.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 				//ll.addView(v);
-				Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.aqua);
-				test_iv[0] = new ImageView(c);
-				test_iv[0].setImageBitmap(bmp);
-				System.out.println("v=?"+v+",test_iv="+test_iv[0]);
-				ll.addView(test_iv[0]);
+				//Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.aqua);
+				//test_iv[0] = new ImageView(c);
+				//test_iv[0].setImageBitmap(bmp);
+				//System.out.println("v=?"+v+",test_iv="+test_iv[0]);
+				//ll.addView(test_iv[0]);
+				
+				//ImageView test;
+				//Object oo;
+				//oo = (Object)v;
+				//test = new ImageView(c);
+				
+
+				//ll.addView(test);
+				
+				
 				//ll.addView(v);
-				Bundle b = new Bundle();
-				b.putParcelable("bitmapdata", bmp);
+				//Bundle b = new Bundle();
+				//test_iv[0] = (ImageView)v;
+				//bmp = v.getDrawingCache();// test
+				//bmp = test_iv[0].getDrawingCache();
+				//b.putParcelable("bitmapdata", bmp);
+				
+				String info4koma[] = new String[5];
+				// ここで配列に要素を入れる
 				Intent intent2;
 				intent2 = new Intent(DrawModeActivity.this, DrawActivity.class );
-				intent2.putExtras(b);
+				intent2.putExtra("info4koma", info4koma);
+				//intent2.putExtras(b);
 				startActivity( intent2 );
 				
 

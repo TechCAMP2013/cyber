@@ -37,6 +37,7 @@ public class DrawView extends View implements OnTouchListener {
 	private Canvas bmpCanvas;
 	private Activity _context;
 	private static Activity activity;
+	int back = 0;
 	
 	public static void show(String str)
 	{
@@ -98,6 +99,10 @@ public class DrawView extends View implements OnTouchListener {
 		super.onDraw(canvas);
 		//髢ｭ譴ｧ蜍ｹ郢ｧ蝣､蜊�ｸｺ荳橸ｽ｡蜉ｱ�顔ｸｺ�､邵ｺ�ｶ邵ｺ�ｽ		
 		canvas.drawColor(Color.WHITE);
+		if(back == 1){
+			canvas.drawBitmap(DrawActivity.back_bitmap, 0, 0,new Paint());
+			//back = 0;
+		}
 		if(bitmap != null){
 			//闖ｫ譎擾ｽｭ蛟･��ｸｺ�ｦ邵ｺ繧�ｽ毅itmap郢ｧ蜻育ｷ帝��ｻ邵ｺ蜷ｶ��			
 			canvas.drawBitmap(bitmap, 0, 0, null);
@@ -120,6 +125,7 @@ public class DrawView extends View implements OnTouchListener {
 			//郢昜ｻ｣縺帷ｹｧ蜻育ｷ帝��ｻ邵ｺ蜷ｶ��			
 			canvas.drawPath(path, paint);
 		}
+		
 	}
 	public void clearDrawList(){
 		bmpCanvas = new Canvas(bitmap);
