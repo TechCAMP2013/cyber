@@ -182,11 +182,6 @@ public class DrawActivity extends Activity {
 		ll.addView(brush_tl1);
 		brush_tl1.setVisibility(View.GONE);
 
-		Bitmap b_yama = BitmapFactory.decodeResource(getResources(), R.drawable.yama);
-		Bitmap b_huki = BitmapFactory.decodeResource(getResources(), R.drawable.huki);
-
-		Bitmap b_yama_bm = Bitmap.createScaledBitmap(b_yama, w/2, b_yama.getHeight(), false);
-		Bitmap b_huki_bm = Bitmap.createScaledBitmap(b_huki, w/2, b_huki.getHeight(), false);
 		/*
 		stamp_tl = new TableLayout(this);
 		stamp_tr = new TableRow[1];
