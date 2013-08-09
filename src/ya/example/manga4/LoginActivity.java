@@ -53,6 +53,8 @@ public class LoginActivity extends HttpActivity {  // Httpつける
 		super.onCreate(savedInstanceState);
 		LinearLayout ll = new LinearLayout(this);
 		ll.setOrientation(LinearLayout.VERTICAL);
+		//ll.setGravity(Gravity.CENTER_VERTICAL);
+		
 		setContentView(ll);
 		
 
@@ -88,7 +90,7 @@ public class LoginActivity extends HttpActivity {  // Httpつける
 		howto_bt.setOnClickListener(new HowtoClickListener());
 		
 		iv = new ImageView(this);
-		AsyncHttpDownload asyncHttpDownload = new AsyncHttpDownload("a.jpg",iv);
+		AsyncHttpDownload asyncHttpDownload = new AsyncHttpDownload("a.jpg",iv,null);
 		asyncHttpDownload.send();
 		ll.addView(iv);
 

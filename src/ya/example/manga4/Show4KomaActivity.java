@@ -2,19 +2,29 @@
 package ya.example.manga4;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.text.Layout;
-import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class Show4KomaActivity extends Activity implements OnClickListener {
 	
@@ -24,19 +34,21 @@ public class Show4KomaActivity extends Activity implements OnClickListener {
 	private final int BTN_END = 3;
 	private ArrayList<ImageButton> _btnList = new ArrayList<ImageButton>();
 	private ViewPager _viewPager = null;
+	
+	
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		LinearLayout linearLayout = new LinearLayout(this);
+	
+		
+		TextView textView = (TextView)findViewById(R.id.textViewTitle);  
+		Intent title_it = getIntent();
+		String title = title_it.getStringExtra("title");
+		textView.setText(title);  
+		
 
-		  TextView tv = new TextView(this);
-		  tv.setText("ボタン1");
-		  linearLayout.addView(tv, new LinearLayout.LayoutParams(
-		    LinearLayout.LayoutParams.WRAP_CONTENT, 
-		    LinearLayout.LayoutParams.WRAP_CONTENT));
-		  setContentView(linearLayout);
 		 
 		_btnList.add((ImageButton) findViewById(R.id.btn_start));
 		_btnList.add((ImageButton) findViewById(R.id.btn_prev));

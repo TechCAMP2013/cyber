@@ -22,7 +22,6 @@ public class AlertHelper extends Activity{
     	LayoutInflater inflater = LayoutInflater.from(context);  
         final View view = inflater.inflate(R.layout.alert,null);  
         ImageView imgAlertIcon = (ImageView)view.findViewById(R.id.imageAlertIcon);  
-
         imgAlertIcon.setImageBitmap(bmp);  
         TextView lblMessage = (TextView)view.findViewById(R.id.lblMessage);  
         lblMessage.setText(message);  
