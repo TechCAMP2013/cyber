@@ -21,12 +21,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,6 +79,10 @@ tv.setText((String)m.get("title") + " (" + (String)m.get("number") + ")");
 ll.addView(tv);
 
 ImageView iv = new ImageView(this);
+AbsListView.LayoutParams params = new AbsListView.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+iv.setLayoutParams(params);
+//iv.setScaleType(ScaleType.FIT_CENTER);
+iv.setAdjustViewBounds(true);
 AsyncHttpDownload asyncHttpDownload = new AsyncHttpDownload((String)m.get("fname"),iv, null);
 asyncHttpDownload.send();
 
