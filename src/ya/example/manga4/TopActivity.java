@@ -1,103 +1,1 @@
-package ya.example.manga4;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import ya.example.manga4.MyGalleryActivity;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-
-
-public class TopActivity extends HttpActivity {
-			HttpActivity activity = this;	
-			EditText name_et,pass_et;
-			int newCount = 0;
-			Button button1; 
-		
-			public void receiveMessage(Map<String, Object> map)    //this
-			{
-				System.out.println("1");
-				if ("top".equals(map.get("id")))
-				{
-					System.out.println("2");
-					newCount = Integer.parseInt((String)map.get("new"));
-					button1.setText("MyGallery(" + newCount + ")");
-				}
-				else
-				{
-				System.out.println("3");
-				}
-			
-				//test_tv.setText("result: " + map.toString());
-			}	
-			
-			
-			
-		
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_top);
-		System.out.println("KOKO");
-		HashMap<String,Object> data = new HashMap<String,Object>();		//koko
-		data.put("id","top");
-								
-		AsyncHttpPost asyncHttpPost = new AsyncHttpPost(data, activity);
-		asyncHttpPost.send();
-		
-		
-
-		// �ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ
-			button1 = (Button) findViewById(R.id.button1);
-			button1.setText("MyGallery(...)");
-		Button button2 = (Button) findViewById(R.id.button2);
-		Button button3 = (Button) findViewById(R.id.button3);
-		
-		// �ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ
-		button1.setOnClickListener(new Button1ClickListener());
-		button2.setOnClickListener(new Button2ClickListener());
-		button3.setOnClickListener(new Button3ClickListener());
-	}
-	class Button1ClickListener implements OnClickListener{
-		public void onClick(View v){
-
-		
-
-			Intent intent =new Intent(TopActivity.this,MyGalleryActivity.class);
-			startActivity(intent);
-
-		}
-	}
-	class Button2ClickListener implements OnClickListener{
-		public void onClick(View v){
-			Intent intent =new Intent(TopActivity.this,Show4KomaActivity.class);
-			startActivity(intent);
-		}
-	}
-	class Button3ClickListener implements OnClickListener{
-		public void onClick(View v){
-			Intent intent =new Intent(TopActivity.this,DrawModeActivity.class);
-			startActivity(intent);
-		}
-	}
-		
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.top, menu);
-		return true;
-	}
-	
-	
-
-}
-
+package ya.example.manga4;import java.util.HashMap;import java.util.Map;import ya.example.manga4.MyGalleryActivity;import android.app.Activity;import android.content.Intent;import android.os.Bundle;import android.view.Menu;import android.view.View;import android.view.View.OnClickListener;import android.widget.Button;import android.widget.EditText;import android.widget.TextView;public class TopActivity extends HttpActivity {HttpActivity activity = this;	EditText name_et,pass_et;int newCount = 0;Button button1;public void receiveMessage(Map<String, Object> map) //this{System.out.println("1");if ("top".equals(map.get("id"))){System.out.println("2");newCount = Integer.parseInt((String)map.get("new"));button1.setText("MyGallery(" + newCount + ")");}else{System.out.println("3");}//test_tv.setText("result: " + map.toString());}	@Overrideprotected void onCreate(Bundle savedInstanceState) {super.onCreate(savedInstanceState);setContentView(R.layout.activity_top);System.out.println("KOKO");HashMap<String,Object> data = new HashMap<String,Object>();	//kokodata.put("id","top");AsyncHttpPost asyncHttpPost = new AsyncHttpPost(data, activity);asyncHttpPost.send();// �ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽbutton1 = (Button) findViewById(R.id.button1);button1.setText("MyGallery(...)");Button button2 = (Button) findViewById(R.id.button2);Button button3 = (Button) findViewById(R.id.button3);// �ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽ�ｽbutton1.setOnClickListener(new Button1ClickListener());button2.setOnClickListener(new Button2ClickListener());button3.setOnClickListener(new Button3ClickListener());}class Button1ClickListener implements OnClickListener{public void onClick(View v){Intent intent =new Intent(TopActivity.this,MyGalleryActivity.class);startActivity(intent);}}class Button2ClickListener implements OnClickListener{public void onClick(View v){Intent intent =new Intent(TopActivity.this,PreviousKomaActivity.class);startActivity(intent);}}class Button3ClickListener implements OnClickListener{public void onClick(View v){Intent intent =new Intent(TopActivity.this,DrawModeActivity.class);startActivity(intent);}}@Overridepublic boolean onCreateOptionsMenu(Menu menu) {// Inflate the menu; this adds items to the action bar if it is present.getMenuInflater().inflate(R.menu.top, menu);return true;}}

@@ -90,7 +90,7 @@ public class LoginActivity extends HttpActivity {  // Httpつける
 		howto_bt.setOnClickListener(new HowtoClickListener());
 		
 		iv = new ImageView(this);
-		AsyncHttpDownload asyncHttpDownload = new AsyncHttpDownload("a.jpg",iv);
+		AsyncHttpDownload asyncHttpDownload = new AsyncHttpDownload("a.jpg",iv,null);
 		asyncHttpDownload.send();
 		ll.addView(iv);
 
