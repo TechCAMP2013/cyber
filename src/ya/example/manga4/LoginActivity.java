@@ -53,7 +53,7 @@ public class LoginActivity extends HttpActivity {  // Httpつける
 		super.onCreate(savedInstanceState);
 		LinearLayout ll = new LinearLayout(this);
 		ll.setOrientation(LinearLayout.VERTICAL);
-		ll.setGravity(Gravity.CENTER_VERTICAL);
+		//ll.setGravity(Gravity.CENTER_VERTICAL);
 		
 		setContentView(ll);
 		
