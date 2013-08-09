@@ -187,7 +187,7 @@ public class DrawActivity extends Activity {
 
 		Bitmap b_yama_bm = Bitmap.createScaledBitmap(b_yama, w/2, b_yama.getHeight(), false);
 		Bitmap b_huki_bm = Bitmap.createScaledBitmap(b_huki, w/2, b_huki.getHeight(), false);
-
+		/*
 		stamp_tl = new TableLayout(this);
 		stamp_tr = new TableRow[1];
 
@@ -204,7 +204,7 @@ public class DrawActivity extends Activity {
 		stamp_tl.addView(stamp_tr[0]);
 		ll.addView(stamp_tl);
 		stamp_tl.setVisibility(View.GONE);
-
+		*/
 
 		//tv = new TextView(this);
 		//tv.setText("縺薙％");
@@ -239,7 +239,7 @@ public class DrawActivity extends Activity {
 		brush_iv[4].setOnClickListener(new B_82ClickListener());
 		brush_iv[5].setOnClickListener(new B_100ClickListener());
 
-		stamp_iv[0].setOnClickListener(new YamaClickListener());
+		//stamp_iv[0].setOnClickListener(new YamaClickListener());
 
 		brush_tl1.setOnClickListener(new TlClickListener());
 
@@ -307,6 +307,9 @@ public class DrawActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			//tv.setText("eraser");
+			dv.color_array[0] = "255";
+			dv.color_array[1] = "255";
+			dv.color_array[2] = "255";
 		}
 
 	}
@@ -316,11 +319,17 @@ public class DrawActivity extends Activity {
 		public void onClick(View v) {
 			// TODO 閾ｪ蜍慕函謌舌＆繧後◆繝｡繧ｽ繝�ラ繝ｻ繧ｹ繧ｿ繝�			
 			//tv.setText("stamp");
-			if(stamp_tl.getVisibility() == 0){
-				stamp_tl.setVisibility(View.GONE);
-			}else{
-				stamp_tl.setVisibility(View.VISIBLE);
-			}
+			//if(stamp_tl.getVisibility() == 0){
+				//stamp_tl.setVisibility(View.GONE);
+			//}else{
+				//stamp_tl.setVisibility(View.VISIBLE);
+			//}
+			
+			Intent it = new Intent();
+			it.setType("image/*");
+			it.setAction(Intent.ACTION_GET_CONTENT);
+			startActivityForResult(it,GALLERY_APP);
+
 		}
 
 	}
@@ -424,16 +433,13 @@ public class DrawActivity extends Activity {
 
 	}
 
+	/*
 	class YamaClickListener implements OnClickListener{
 
 		@Override
 		public void onClick(View v) {
 			// TODO 自動生成されたメソッド・スタブ
-			Intent it = new Intent();
-			it.setType("image/*");
-			it.setAction(Intent.ACTION_GET_CONTENT);
-			startActivityForResult(it,GALLERY_APP);
-
+			
 
 		}
 	}
@@ -448,7 +454,7 @@ public class DrawActivity extends Activity {
 		}
 
 	}
-
+	*/
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if(requestCode == SELECTCOLOR_ACTIVITY) {

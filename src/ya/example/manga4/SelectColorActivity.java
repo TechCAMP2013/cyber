@@ -73,7 +73,7 @@ public class SelectColorActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_complete4);
+		setContentView(R.layout.activity_select_color);
 		//setContentView(R.layout.main);
 		Button button = (Button) findViewById(R.id.button1);
 		// ボタンオブジェクトにクリックリスナー設定
